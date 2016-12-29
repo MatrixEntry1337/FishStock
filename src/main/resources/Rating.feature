@@ -1,4 +1,4 @@
-Feature: rating
+Feature: Rating
   As a user
   I can rate stocks
 
