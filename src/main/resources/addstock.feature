@@ -15,8 +15,8 @@ Feature: Add Stock
 
   Scenario Outline: Add a stock to my stock list
     Given I am logged in
-    And I am watching <myStocks> stocks
     And Access a list of <stockList> Stocks
+    And I am watching <myStocks> stocks
     When I add <stock> stocks to my stocks
     Then I now watch these <myNewStocks> stocks
 

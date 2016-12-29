@@ -23,14 +23,14 @@ public class AddStockCukeTest {
 	    throw new PendingException();
 	}
 
-	@Given("^I am watching (\\d+) stocks$")
-	public void i_am_watching_stocks(int arg1) throws Throwable {
+	@Given("^Access a list of (\\d+) Stocks$")
+	public void access_a_list_of_Stocks(int arg1) throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new PendingException();
 	}
 
-	@Given("^Access a list of (\\d+) Stocks$")
-	public void access_a_list_of_Stocks(int arg1) throws Throwable {
+	@Given("^I am watching (\\d+) stocks$")
+	public void i_am_watching_stocks(int arg1) throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new PendingException();
 	}
