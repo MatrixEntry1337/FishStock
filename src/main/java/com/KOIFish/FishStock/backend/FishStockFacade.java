@@ -1,5 +1,5 @@
 package com.KOIFish.FishStock.backend;
 
-public class FishStockFasade {
+public class FishStockFacade {
 
 }
