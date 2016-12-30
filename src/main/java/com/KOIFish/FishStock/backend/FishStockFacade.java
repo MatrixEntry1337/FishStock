@@ -12,6 +12,10 @@ public class FishStockFacade {
 	@Autowired
 	private FishStockUserDAO userDAO;
 	public void setUserDAO(FishStockUserDAO userDAO) { this.userDAO = userDAO; }
+	
+	@Autowired
+	private FishStockSessionGiver sessionGiver;
+	public void setSessionGiver(FishStockSessionGiver sessionGiver) { this.sessionGiver = sessionGiver; }
 
 	public FishStockFacade() { super(); }
 	
@@ -20,7 +24,7 @@ public class FishStockFacade {
 		Transaction tx = null;
 		FishStockUser result = null;
 		try {
-			session = FishStockSessionGiver.getNewSession();
+			session = sessionGiver.getNewSession();
 			tx = session.beginTransaction();
 			result = userDAO.getUserByUsername(session, username);
 			tx.commit();
@@ -42,7 +46,7 @@ public class FishStockFacade {
 		Transaction tx = null;
 		FishStockUser result = null;
 		try {
-			session = FishStockSessionGiver.getNewSession();
+			session = sessionGiver.getNewSession();
 			tx = session.beginTransaction();
 			result = userDAO.getUserById(session, id);
 			tx.commit();
