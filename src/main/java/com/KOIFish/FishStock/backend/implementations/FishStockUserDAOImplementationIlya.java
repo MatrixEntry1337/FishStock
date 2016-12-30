@@ -11,6 +11,12 @@ import com.KOIFish.FishStock.beans.FishStockUser;
 @Component(value="userDAO")
 public class FishStockUserDAOImplementationIlya implements FishStockUserDAO {
 
+	/**
+	 * Get user from db by username. If user with given username does not exist, return null.
+	 * @param session session created by facade
+	 * @param username username
+	 * @return User object or null if user with given username does not exist
+	 */
 	@Override
 	public FishStockUser getUserByUsername(Session session, String username) {
 		Criteria criteria = session.createCriteria(FishStockUser.class);
@@ -18,6 +24,13 @@ public class FishStockUserDAOImplementationIlya implements FishStockUserDAO {
 		return (FishStockUser)criteria.uniqueResult();
 	}
 
+	/**
+	 * Get user from db by id (primary key). If that primary key does not exist, return null.
+	 * 
+	 * @param session session created by facade
+	 * @param id id (PK)
+	 * @return User object or null if PK does not exist
+	 */
 	@Override
 	public FishStockUser getUserById(Session session, Integer id) {
 		Criteria criteria = session.createCriteria(FishStockUser.class);

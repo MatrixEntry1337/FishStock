@@ -23,7 +23,7 @@ public class FishStockFacadeToUserDAOTest {
 	}
 	
 	@Test
-	public void testSuccessfullRetrievalByUsername() {
+	public void testSuccessfulRetrievalByUsername() {
 		FishStockFacade fsd = (FishStockFacade) context.getBean("facade");
 
 		FishStockUser user = fsd.getUserByUsername("thanks");
@@ -44,7 +44,7 @@ public class FishStockFacadeToUserDAOTest {
 	}
 
 	@Test
-	public void testSuccessfullRetrievalById() {
+	public void testSuccessfulRetrievalById() {
 		FishStockFacade fsd = (FishStockFacade) context.getBean("facade");
 
 		FishStockUser user = fsd.getUserById(1);

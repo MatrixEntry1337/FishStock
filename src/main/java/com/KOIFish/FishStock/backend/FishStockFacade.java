@@ -7,6 +7,12 @@ import org.springframework.stereotype.Component;
 
 import com.KOIFish.FishStock.beans.FishStockUser;
 
+/**
+ * Facade class that redirects calls to DAOs while handling sessions and transactions.
+ * 
+ * @author Ilya Siarheyeu
+ *
+ */
 @Component(value="facade")
 public class FishStockFacade {
 	@Autowired

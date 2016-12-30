@@ -5,6 +5,12 @@ import org.springframework.stereotype.Component;
 
 import com.KOIFish.FishStock.beans.FishStockUser;
 
+/**
+ * Business delegate class that delegate all the calls to services.
+ * 
+ * @author Ilya Siarheyeu
+ *
+ */
 @Component(value="businessdelegate")
 public class FishStockBusinessDelegate {
 	@Autowired

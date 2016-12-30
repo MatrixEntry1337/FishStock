@@ -8,12 +8,22 @@ import com.KOIFish.FishStock.backend.FishStockFacade;
 import com.KOIFish.FishStock.beans.FishStockUser;
 import com.KOIFish.FishStock.middletier.FishStockUserService;
 
+/**
+ * Implementation of UserService
+ * 
+ * @author Ilya Siarheyeu
+ *
+ */
 @Service(value="userservice")
 public class FishStockUserServiceImplementationIlya implements FishStockUserService {
 	@Autowired
 	private FishStockFacade facade;
 	public void setFacade(FishStockFacade facade) { this.facade = facade; }
 	
+	/**
+	 * Provide authentication functionality.
+	 * If user exists and password matches, return the user object; otherwise return null.
+	 */
 	public FishStockUser authenticateUser(String username, String password){
 		FishStockUser user = facade.getUserByUsername(username);
 		

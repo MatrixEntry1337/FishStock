@@ -50,7 +50,7 @@ public class FishStockUserDAOTest {
 	}
 
 	@Test
-	public void testSuccessfullRetrievalByUsername() {
+	public void testSuccessfulRetrievalByUsername() {
 		FishStockUserDAO dao = (FishStockUserDAO) context.getBean("userDAO");
 
 		FishStockUser user = dao.getUserByUsername(session, "thanks");
@@ -71,7 +71,7 @@ public class FishStockUserDAOTest {
 	}
 
 	@Test
-	public void testSuccessfullRetrievalById() {
+	public void testSuccessfulRetrievalById() {
 		FishStockUserDAO dao = (FishStockUserDAO) context.getBean("userDAO");
 
 		FishStockUser user = dao.getUserById(session, 1);
