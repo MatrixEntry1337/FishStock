@@ -5,10 +5,10 @@
 <hibernate-configuration>
 	<session-factory>
 		<property name="hibernate.connection.driver_class">
-			com.mysql.jdbc.Driver
+			com.mysql.cj.jdbc.Driver
 		</property>
 		<property name="hibernate.connection.url">
-			mysqldbinstance.cfqsiykloeqw.us-east-1.rds.amazonaws.com:3306:FishStock
+			jdbc:mysql://mysqldbinstance.cfqsiykloeqw.us-east-1.rds.amazonaws.com:3306/FishStock
 		</property>
 		<property name="hibernate.connection.username">FishStockUser</property>
 		<property name="hibernate.connection.password">6t7PDuNYqF</property>
@@ -22,7 +22,7 @@
 		<property name="hibernate.cache.use_second_level_cache">true</property>
 		<property name="hibernate.cache.use_query_cache">true</property>
 
-		<mapping class="beans.FishStockCompany"></mapping>
+		<mapping class="com.KOIFish.FishStock.beans.FishStockCompany"></mapping>
 
 	</session-factory>
 </hibernate-configuration>
