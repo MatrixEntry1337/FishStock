@@ -3,8 +3,10 @@ package com.KOIFish.FishStock.beans;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="Fish_Users")
 public class FishStockUser {
 	@Id
 	@Column(name="UserId")
