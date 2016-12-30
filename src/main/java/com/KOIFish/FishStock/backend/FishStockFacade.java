@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.KOIFish.FishStock.beans.FishStockUser;
 
-@Service(value="facade")
+@Component(value="facade")
 public class FishStockFacade {
 	@Autowired
 	private FishStockUserDAO userDAO;
