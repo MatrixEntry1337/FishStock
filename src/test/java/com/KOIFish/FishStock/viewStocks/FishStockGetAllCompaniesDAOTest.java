@@ -19,7 +19,7 @@ import com.KOIFish.FishStock.backend.FishStockCompanyDAO;
 import com.KOIFish.FishStock.beans.FishStockCompany;
 import com.KOIFish.FishStock.configuration.FishStockBackEndConfiguration;
 
-public class FishStockGetAllDAOTest {
+public class FishStockGetAllCompaniesDAOTest {
 
 	private static  ApplicationContext context;
 	private static 	SessionFactory sf;
