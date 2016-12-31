@@ -1,15 +1,18 @@
 package com.KOIFish.FishStock.backend.implementations;
 
-import com.KOIFish.FishStock.backend.FishStockCompanyDAO;
-import com.KOIFish.FishStock.beans.FishStockCompany;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import com.KOIFish.FishStock.backend.FishStockCompanyDAO;
+import com.KOIFish.FishStock.beans.FishStockCompany;
 
-@Repository
+@Repository(value="companyDAO")
 public class FishStockCompanyDAOImplementation implements FishStockCompanyDAO {
 
     @Override
@@ -19,9 +22,11 @@ public class FishStockCompanyDAOImplementation implements FishStockCompanyDAO {
         FishStockCompany company = (FishStockCompany) criteria.uniqueResult();
         return company.getTotalRating()/company.getTotalUsersRated();
     }
-    public List getAllCompanies(Session session) {
-        Criteria criteria = session.createCriteria(FishStockCompany.class);
-        return criteria.list();
-    }
+    
+	@Override
+	public Set<FishStockCompany> getAllCompanies(Session session) {
+		Criteria criteria = session.createCriteria(FishStockCompany.class);
+		return new HashSet<FishStockCompany>(criteria.list());
+	}
 
 }
