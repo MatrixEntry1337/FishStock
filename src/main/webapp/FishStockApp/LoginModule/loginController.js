@@ -12,7 +12,14 @@ loginModule.controller('loginCtrl', function($scope, loginFtry, $log){
 	$scope.loginFormData = {}
 	
 	$scope.login = function(){
-		loginFtry.login($scope.loginFormData);
+		successFunc = function(response){
+			console.log(response.data.result);
+		};
+		failureFunc = function(response){
+			console.log('error');
+			console.log(response);
+		};
+		loginFtry.login($scope.loginFormData, successFunc, failureFunc);
 	}
 	
 });

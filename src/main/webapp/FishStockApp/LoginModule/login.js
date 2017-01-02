@@ -19,17 +19,8 @@ loginModule.factory('loginFtry', function($http, $log){
 	};
 	
 	
-	public.login = function (loginFormData) {
-		$http.post('/FishStock/login.do', loginFormData).then(
-				function(response){
-					console.log(response.data.result);
-				},
-				function(response){
-					console.log('error');
-					console.log(response);
-				}
-				
-		);
+	public.login = function (loginFormData, successFunc, failureFunc) {
+		$http.post('/FishStock/login.do', loginFormData).then(successFunc, failureFunc);
 	};
 	
 	public.getAppName = function(){
