@@ -11,7 +11,7 @@ fishStockApp.config(function($stateProvider, $urlRouterProvider){
 	$stateProvider
 		.state("home", {
 			url: "/home",
-			templateUrl: "templates/home.html",
+			templateUrl: "FishStockApp/templates/home.html",
 			controller: "publicCtrl"
 		});
 });
