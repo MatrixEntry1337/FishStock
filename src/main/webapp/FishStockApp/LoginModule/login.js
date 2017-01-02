@@ -21,11 +21,11 @@ loginModule.factory('loginFtry', function($http, $log){
 	
 	public.login = function (loginFormData) {
 		$http.post('/FishStock/login.do', loginFormData).then(
-				function(){
-					console.log('success');
+				function(response){
+					console.log(response.data.result);
 				},
 				function(response){
-					console.log('failure');
+					console.log('error');
 					console.log(response);
 				}
 				
