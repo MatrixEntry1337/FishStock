@@ -59,6 +59,7 @@ public class FishStockUserDAOTest {
 		assertEquals("Tom", user.getFirstName());
 		assertEquals("Hanks", user.getLastName());
 		assertEquals("thankstome@gmail.com", user.getEmail());
+		assertNotEquals(0, user.getCompaniesWatched().size());
 	}
 
 	@Test

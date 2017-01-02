@@ -2,6 +2,7 @@ package com.KOIFish.FishStock.login;
 
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNull;
 
 import org.junit.BeforeClass;
@@ -32,6 +33,7 @@ public class FishStockFacadeToUserDAOTest {
 		assertEquals("Tom", user.getFirstName());
 		assertEquals("Hanks", user.getLastName());
 		assertEquals("thankstome@gmail.com", user.getEmail());
+		assertNotEquals(0, user.getCompaniesWatched().size());
 	}
 
 	@Test

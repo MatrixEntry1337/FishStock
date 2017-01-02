@@ -1,8 +1,14 @@
 package com.KOIFish.FishStock.beans;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,6 +33,11 @@ public class FishStockUser {
 	@Column(name="Password")
 	private String password;
 	
+	@ManyToMany
+	@JoinTable(name="Fish_Watchlist", joinColumns=@JoinColumn(name="UserId"), 
+	inverseJoinColumns=@JoinColumn(name="CompanyId"))
+	private Set<FishStockCompany> companiesWatched = new HashSet<>();
+	
 	
 	public FishStockUser() { super(); }
 
@@ -48,5 +59,14 @@ public class FishStockUser {
 
 	public String getPassword() { return password; }
 	public void setPassword(String password) { this.password = password; }
+
+	public Set<FishStockCompany> getCompaniesWatched() { return companiesWatched; }
+	public void setCompaniesWatched(Set<FishStockCompany> companiesWatched) { this.companiesWatched = companiesWatched; }
+
+	@Override
+	public String toString() {
+		return "FishStockUser [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", username=" + username + ", password=" + password + ", companiesWatched=" + companiesWatched + "]";
+	}
 	
 }
