@@ -1,4 +1,4 @@
-publicModule.controller('publicCtrl', function($scope, publicFtry, $log){
+publicModule.controller('publicCtrl', function($scope, publicFtry, $log, $http){
 	$log.log("Started Public Controller");
 	
 	$scope.appName = publicFtry.getAppName();
@@ -8,5 +8,21 @@ publicModule.controller('publicCtrl', function($scope, publicFtry, $log){
 	$scope.authors = publicFtry.getAuthors();
 	
 	$scope.version = publicFtry.getVersion();
+	
+	//login func ?
+	$scope.loginFormData = {}
+	
+	$scope.processLoginForm = function () {
+		$http({
+			method  : 'POST',
+			URL     : 'login.do',
+			data    : JSON.stringify($.param($scope.loginFormData))
+				})
+			.success(function(data){
+				console.log(data);
+			});
+	};
+	
+	
 	
 });

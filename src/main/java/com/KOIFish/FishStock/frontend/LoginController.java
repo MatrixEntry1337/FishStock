@@ -1,6 +1,7 @@
 package com.KOIFish.FishStock.frontend;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -9,8 +10,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class LoginController {
 	
 	@ResponseBody
-	@RequestMapping(value={"/index"}, method={RequestMethod.POST}, produces={"application/json"})
-	public String login() {
+	@RequestMapping(value={"/login.do"}, method={RequestMethod.POST}, produces={"application/json"})
+	public String login(@RequestBody String username, @RequestBody String password) {
+		
+		System.out.println(username + "  " + password);
 		
 		return null;
 	}

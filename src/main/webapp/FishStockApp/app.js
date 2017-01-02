@@ -4,14 +4,14 @@ var fishStockApp = angular.module('FishStockApp', [ 'publicModule','ui.router'])
 // config for app
 fishStockApp.config(function($stateProvider, $urlRouterProvider){
 	
-	// go to home on startup
-	$urlRouterProvider.otherwise('home');
+	// go to login on startup
+	$urlRouterProvider.otherwise('login');
 	
 	// app states
 	$stateProvider
-		.state("home", {
-			url: "/home",
-			templateUrl: "templates/home.html",
+		.state("login", {
+			url: "login",
+			templateUrl: "templates/login.html",
 			controller: "publicCtrl"
 		});
 });
