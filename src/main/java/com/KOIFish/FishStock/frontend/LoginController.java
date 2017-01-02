@@ -14,8 +14,9 @@ import com.KOIFish.FishStock.middletier.FishStockBusinessDelegate;
 public class LoginController {
 	
 	@Autowired
-	FishStockBusinessDelegate delegate;
-	
+	private FishStockBusinessDelegate delegate;
+	public void setDelegate(FishStockBusinessDelegate delegate) { this.delegate = delegate; }
+
 	@ResponseBody
 	@RequestMapping(value={"/login.do"}, method={RequestMethod.POST}, consumes={"application/json"}, produces={"application/json"})
 	public String login(@RequestBody FishStockUser user) {
