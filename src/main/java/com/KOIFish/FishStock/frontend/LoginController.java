@@ -13,6 +13,8 @@ public class LoginController {
 	@RequestMapping(value={"/login.do"}, method={RequestMethod.POST}, produces={"application/json"})
 	public String login(@RequestBody String username, @RequestBody String password) {
 		
+		System.out.println("Got here.");
+		
 		System.out.println(username + "  " + password);
 		
 		return null;
