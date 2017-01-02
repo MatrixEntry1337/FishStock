@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class LoginController {
 	
 	@ResponseBody
-	@RequestMapping(value={"/login.do"}, method={RequestMethod.POST}, produces={"application/json"})
+	@RequestMapping(value={"/login.do"}, method={RequestMethod.POST}, consumes={"application/json"})
 	public String login(@RequestBody String username, @RequestBody String password) {
 		
 		System.out.println("Got here.");
