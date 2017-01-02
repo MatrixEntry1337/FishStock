@@ -15,22 +15,22 @@ import javax.persistence.Table;
 @Table(name="Fish_Users")
 public class FishStockUser {
 	@Id
-	@Column(name="UserId")
+	@Column(name="UserId", nullable=false)
 	private int id;
 	
-	@Column(name="FirstName")
+	@Column(name="FirstName", nullable=false, length=50)
 	private String firstName;
 	
-	@Column(name="LastName")
+	@Column(name="LastName", nullable=false, length=50)
 	private String lastName;
 	
-	@Column(name="Email")
+	@Column(name="Email", nullable=false, length=100)
 	private String email;
 	
-	@Column(name="Username")
+	@Column(name="Username", nullable=false, length=20)
 	private String username;
 	
-	@Column(name="Password")
+	@Column(name="Password", nullable=false, length=150)
 	private String password;
 	
 	@ManyToMany

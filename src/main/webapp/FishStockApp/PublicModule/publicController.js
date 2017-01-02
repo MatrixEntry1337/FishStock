@@ -1,4 +1,4 @@
-publicModule.controller('publicCtrl', function($scope, publicFtry, $log){
+publicModule.controller('publicCtrl', function($scope, publicFtry, $log, $http){
 	$log.log("Started Public Controller");
 	
 	$scope.appName = publicFtry.getAppName();
@@ -8,5 +8,4 @@ publicModule.controller('publicCtrl', function($scope, publicFtry, $log){
 	$scope.authors = publicFtry.getAuthors();
 	
 	$scope.version = publicFtry.getVersion();
-	
 });
