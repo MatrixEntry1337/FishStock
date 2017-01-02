@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -33,7 +34,7 @@ public class FishStockUser {
 	@Column(name="Password", nullable=false, length=150)
 	private String password;
 	
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="Fish_Watchlist", joinColumns=@JoinColumn(name="UserId"), 
 	inverseJoinColumns=@JoinColumn(name="CompanyId"))
 	private Set<FishStockCompany> companiesWatched = new HashSet<>();
