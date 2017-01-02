@@ -1,5 +1,5 @@
 // main angular module 
-var fishStockApp = angular.module('FishStockApp', [ 'publicModule','ui.router']);
+var fishStockApp = angular.module('FishStockApp', ['publicModule','ui.router', 'loginModule']);
 
 // config for app
 fishStockApp.config(function($stateProvider, $urlRouterProvider){
@@ -10,8 +10,9 @@ fishStockApp.config(function($stateProvider, $urlRouterProvider){
 	// app states
 	$stateProvider
 		.state("login", {
-			url: "login",
-			templateUrl: "/FishStockApp/templates/login.html", })
+			url: "/login",
+			templateUrl: "FishStockApp/templates/login.html",
+			controller: "loginCtrl"})
 			
 		.state("home", {
 			url: "/home",

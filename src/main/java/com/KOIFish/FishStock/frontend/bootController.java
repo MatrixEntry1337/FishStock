@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class bootController {
 	
-	@RequestMapping(value={"/"}, method=RequestMethod.GET)
+	@RequestMapping(value={"/index"}, method=RequestMethod.GET)
 	// no response body.. returned value goes to IRVR
 	public String homePage(){
 		// InternalResourceViewResolver will prepend the prefix
-				// /WEB-INF/pages/index.html
+		///WEB-INF/pages/index.html
 		// requestDispatcher.forward(req,resp)
 		return "index"; 
 	}

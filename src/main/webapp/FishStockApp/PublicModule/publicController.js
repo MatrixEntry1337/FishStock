@@ -8,21 +8,4 @@ publicModule.controller('publicCtrl', function($scope, publicFtry, $log, $http){
 	$scope.authors = publicFtry.getAuthors();
 	
 	$scope.version = publicFtry.getVersion();
-	
-	//login func ?
-	$scope.loginFormData = {}
-	
-	$scope.processLoginForm = function () {
-		$http({
-			method  : 'POST',
-			URL     : 'login.do',
-			data    : JSON.stringify($scope.loginFormData)
-				})
-			.success(function(data){
-				console.log(data);
-			});
-	};
-	
-	
-	
 });
