@@ -35,7 +35,7 @@ public class FishStockCompany {
 	@Column(name="TotalUsersRated", nullable=true)
 	private int totalUsersRated;
 	
-	@ManyToMany(mappedBy="Fish_Watchlist")
+	@ManyToMany(mappedBy="companiesWatched")
 	private Set<FishStockUser> usersWatching = new HashSet<FishStockUser>();
 	
 	public FishStockCompany(){
