@@ -16,7 +16,7 @@ publicModule.controller('publicCtrl', function($scope, publicFtry, $log, $http){
 		$http({
 			method  : 'POST',
 			URL     : 'login.do',
-			data    : JSON.stringify($.param($scope.loginFormData))
+			data    : JSON.stringify($scope.loginFormData)
 				})
 			.success(function(data){
 				console.log(data);
