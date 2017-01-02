@@ -20,12 +20,12 @@ loginModule.factory('loginFtry', function($http, $log){
 	
 	
 	public.login = function (loginFormData) {
-		$http.post('login.do', loginFormData). then(
+		$http.post('login.do', loginFormData).then(
 				function(){
-					console.log(success);
+					console.log('success');
 				},
 				function(){
-					console.log(failure);
+					console.log('failure');
 				}
 				
 		);

@@ -1,18 +1,18 @@
 loginModule.controller('loginCtrl', function($scope, loginFtry, $log){
 	$log.log("Started Login Controller");
 	
-	$scope.appName = publicFtry.getAppName();
+	$scope.appName = loginFtry.getAppName();
 	
-	$scope.about = publicFtry.getAbout();
+	$scope.about = loginFtry.getAbout();
 	
-	$scope.authors = publicFtry.getAuthors();
+	$scope.authors = loginFtry.getAuthors();
 	
-	$scope.version = publicFtry.getVersion();
+	$scope.version = loginFtry.getVersion();
 	
 	$scope.loginFormData = {}
 	
 	$scope.login = function(){
-		loginFtry.login(loginFormData);
+		loginFtry.login($scope.loginFormData);
 	}
 	
 });
