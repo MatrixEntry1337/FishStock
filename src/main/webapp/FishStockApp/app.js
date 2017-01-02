@@ -9,9 +9,13 @@ fishStockApp.config(function($stateProvider, $urlRouterProvider){
 	
 	// app states
 	$stateProvider
-		.state("login", {
+		/*.state("login", {
 			url: "login",
 			templateUrl: "/FishStockApp/templates/login.html",
+			*/
+		.state("home", {
+			url: "/home",
+			templateUrl: "FishStockApp/templates/home.html",
 			controller: "publicCtrl"
 		});
 });
