@@ -13,8 +13,8 @@ import com.KOIFish.FishStock.middletier.FishStockBusinessDelegate;
 @Controller
 public class LoginController {
 	
-	@Autowired
 	private FishStockBusinessDelegate delegate;
+	@Autowired
 	public void setDelegate(FishStockBusinessDelegate delegate) { this.delegate = delegate; }
 
 	@ResponseBody

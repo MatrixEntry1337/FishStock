@@ -17,16 +17,16 @@ import java.util.Set;
  */
 @Component(value="facade")
 public class FishStockFacade {
-	@Autowired
 	private FishStockUserDAO userDAO;
+	@Autowired
 	public void setUserDAO(FishStockUserDAO userDAO) { this.userDAO = userDAO; }
 
-	@Autowired
 	private FishStockCompanyDAO companyDAO;
+	@Autowired
 	public void setCompanyDAO(FishStockCompanyDAO companyDAO){ this.companyDAO = companyDAO; }
 
-	@Autowired
 	private FishStockSessionGiver sessionGiver;
+	@Autowired
 	public void setSessionGiver(FishStockSessionGiver sessionGiver) { this.sessionGiver = sessionGiver; }
 
 	public FishStockFacade() { super(); }

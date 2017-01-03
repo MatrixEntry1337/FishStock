@@ -13,8 +13,8 @@ import com.KOIFish.FishStock.beans.FishStockUser;
  */
 @Component(value="businessdelegate")
 public class FishStockBusinessDelegate {
-	@Autowired
 	FishStockUserService userService;
+	@Autowired
 	public void setUserService(FishStockUserService userService) { this.userService = userService; }
 	
 	public FishStockUser authenticateUser(String username, String password) {
