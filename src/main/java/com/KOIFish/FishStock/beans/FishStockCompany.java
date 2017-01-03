@@ -1,11 +1,15 @@
 package com.KOIFish.FishStock.beans;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 
@@ -30,6 +34,9 @@ public class FishStockCompany {
 	
 	@Column(name="TotalUsersRated", nullable=true)
 	private int totalUsersRated;
+	
+	@ManyToMany(mappedBy="companiesWatched")
+	private Set<FishStockUser> usersWatching = new HashSet<FishStockUser>();
 	
 	public FishStockCompany(){
 		super();
