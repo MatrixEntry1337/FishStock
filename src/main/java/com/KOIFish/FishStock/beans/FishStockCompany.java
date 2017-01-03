@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,7 +21,6 @@ public class FishStockCompany {
 	
 	@Id
 	@Column(name="CompanyId", nullable=false)
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int companyId;
 	
 	@Column(name="Name", nullable=false, length=100)
@@ -35,8 +35,8 @@ public class FishStockCompany {
 	@Column(name="TotalUsersRated", nullable=true)
 	private int totalUsersRated;
 	
-	@ManyToMany(mappedBy="companiesWatched")
-	private Set<FishStockUser> usersWatching = new HashSet<FishStockUser>();
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy="companiesWatched")
+	private Set<FishStockUser> usersWatching = new HashSet<>();
 	
 	public FishStockCompany(){
 		super();
@@ -51,32 +51,49 @@ public class FishStockCompany {
 	public int getCompanyId() {
 		return companyId;
 	}
+	
 	public void setCompanyId(int companyId) {
 		this.companyId = companyId;
 	}
+	
 	public String getCompanyName() {
 		return companyName;
 	}
+	
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
+	
 	public String getSymbol() {
 		return symbol;
 	}
+	
 	public void setSymbol(String symbol) {
 		this.symbol = symbol;
 	}
+	
 	public int getTotalRating() {
 		return totalRating;
 	}
+	
 	public void setTotalRating(int totalRating) {
 		this.totalRating = totalRating;
 	}
+	
 	public int getTotalUsersRated() {
 		return totalUsersRated;
 	}
-	public void setTotalUsersRating(int totalUsersRated) {
+
+	public void setTotalUsersRated(int totalUsersRated) {
 		this.totalUsersRated = totalUsersRated;
+	}
+	
+	public Set<FishStockUser> getUsersWatching() {
+		return usersWatching;
+	}
+
+	public void setUsersWatching(Set<FishStockUser> usersWatching) {
+		this.usersWatching = usersWatching;
 	}
 
 	@Override
@@ -84,6 +101,5 @@ public class FishStockCompany {
 		return "FishStockCompany [companyId=" + companyId + ", companyName=" + companyName + ", symbol=" + symbol
 				+ ", totalRating=" + totalRating + ", totalUsersRated=" + totalUsersRated + "]";
 	}
-	
-	
+
 }
