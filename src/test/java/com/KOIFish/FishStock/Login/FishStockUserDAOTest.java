@@ -1,4 +1,4 @@
-package com.KOIFish.FishStock.login;
+package com.KOIFish.FishStock.Login;
 
 import static org.junit.Assert.*;
 
