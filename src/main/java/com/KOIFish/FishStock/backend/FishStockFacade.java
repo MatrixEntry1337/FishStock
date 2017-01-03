@@ -1,14 +1,13 @@
 package com.KOIFish.FishStock.backend;
 
-import java.util.Set;
-
+import com.KOIFish.FishStock.beans.FishStockCompany;
+import com.KOIFish.FishStock.beans.FishStockUser;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.KOIFish.FishStock.beans.FishStockCompany;
-import com.KOIFish.FishStock.beans.FishStockUser;
+import java.util.Set;
 
 /**
  * Facade class that redirects calls to DAOs while handling sessions and transactions.
@@ -18,16 +17,16 @@ import com.KOIFish.FishStock.beans.FishStockUser;
  */
 @Component(value="facade")
 public class FishStockFacade {
-	@Autowired
 	private FishStockUserDAO userDAO;
+	@Autowired
 	public void setUserDAO(FishStockUserDAO userDAO) { this.userDAO = userDAO; }
 
-	@Autowired
 	private FishStockCompanyDAO companyDAO;
+	@Autowired
 	public void setCompanyDAO(FishStockCompanyDAO companyDAO){ this.companyDAO = companyDAO; }
 
-	@Autowired
 	private FishStockSessionGiver sessionGiver;
+	@Autowired
 	public void setSessionGiver(FishStockSessionGiver sessionGiver) { this.sessionGiver = sessionGiver; }
 
 	public FishStockFacade() { super(); }
@@ -95,5 +94,23 @@ public class FishStockFacade {
 		}
 		return set;
 	}
-
+	public void modifyCompanyRating(int rating, int companyId) {
+		Session session = null;
+		Transaction tx = null;
+		try {
+		    session = sessionGiver.getNewSession();
+		    tx = session.beginTransaction();
+		    companyDAO.modifyRating(session, rating, companyId);
+		    tx.commit();
+        }catch (RuntimeException e) {
+		    if(tx != null) {
+		        tx.rollback();
+            }
+        }finally {
+		    if(session != null) {
+                session.disconnect();
+                session.close();
+            }
+        }
+    }
 }
