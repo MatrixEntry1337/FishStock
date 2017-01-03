@@ -11,5 +11,5 @@ import com.KOIFish.FishStock.beans.FishStockUser;
 public interface FishStockUserService {
 	
 	public FishStockUser authenticateUser(String username, String password);
-
+	void modifyCompanyRating(int rating, int companyId);
 }

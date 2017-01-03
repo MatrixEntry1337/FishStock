@@ -1,12 +1,11 @@
 package com.KOIFish.FishStock.middletier.implementations;
 
-import org.mindrot.jbcrypt.BCrypt;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.KOIFish.FishStock.backend.FishStockFacade;
 import com.KOIFish.FishStock.beans.FishStockUser;
 import com.KOIFish.FishStock.middletier.FishStockUserService;
+import org.mindrot.jbcrypt.BCrypt;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * Implementation of UserService
@@ -16,7 +15,7 @@ import com.KOIFish.FishStock.middletier.FishStockUserService;
  */
 @Service(value="userservice")
 public class FishStockUserServiceImplementationIlya implements FishStockUserService {
-	@Autowired
+    @Autowired
 	private FishStockFacade facade;
 	public void setFacade(FishStockFacade facade) { this.facade = facade; }
 	
@@ -35,4 +34,9 @@ public class FishStockUserServiceImplementationIlya implements FishStockUserServ
 		
 		return user;
 	}
+
+    @Override
+    public void modifyCompanyRating(int rating, int companyId) {
+        facade.modifyCompanyRating(rating, companyId);
+    }
 }
