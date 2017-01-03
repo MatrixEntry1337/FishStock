@@ -4,7 +4,6 @@ import com.KOIFish.FishStock.backend.FishStockCompanyDAO;
 import com.KOIFish.FishStock.beans.FishStockCompany;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashSet;
@@ -27,7 +26,6 @@ public class FishStockCompanyDAOImplementation implements FishStockCompanyDAO {
 	}
 
     public void modifyRating(Session session, int rating, int companyId) {
-        Transaction tx = session.beginTransaction();
         int totalRating;
         int usersRated;
         FishStockCompany company = (FishStockCompany) session.get(FishStockCompany.class, companyId);
@@ -38,7 +36,5 @@ public class FishStockCompanyDAOImplementation implements FishStockCompanyDAO {
         company.setTotalRating(totalRating);
         company.setTotalUsersRated(usersRated);
         session.update(company);
-        tx.commit();
     }
-
 }
