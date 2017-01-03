@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -34,10 +36,8 @@ public class FishStockUser {
 	@Column(name="Password", nullable=false, length=150)
 	private String password;
 	
-	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name="Fish_Watchlist", joinColumns=@JoinColumn(name="UserId"), 
-	inverseJoinColumns=@JoinColumn(name="CompanyId"))
-	private Set<FishStockCompany> companiesWatched = new HashSet<>();
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="user")
+	private Set<FishStockTimeperiod> companiesWatched = new HashSet<>();
 	
 	
 	public FishStockUser() { super(); }
@@ -61,8 +61,8 @@ public class FishStockUser {
 	public String getPassword() { return password; }
 	public void setPassword(String password) { this.password = password; }
 
-	public Set<FishStockCompany> getCompaniesWatched() { return companiesWatched; }
-	public void setCompaniesWatched(Set<FishStockCompany> companiesWatched) { this.companiesWatched = companiesWatched; }
+	public Set<FishStockTimeperiod> getCompaniesWatched() { return companiesWatched; }
+	public void setCompaniesWatched(Set<FishStockTimeperiod> companiesWatched) { this.companiesWatched = companiesWatched; }
 
 	@Override
 	public String toString() {

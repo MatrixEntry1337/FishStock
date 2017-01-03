@@ -1,16 +1,9 @@
 package com.KOIFish.FishStock.beans;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 
@@ -34,9 +27,6 @@ public class FishStockCompany {
 	
 	@Column(name="TotalUsersRated", nullable=true)
 	private int totalUsersRated;
-	
-	@ManyToMany(fetch = FetchType.EAGER, mappedBy="companiesWatched")
-	private Set<FishStockUser> usersWatching = new HashSet<>();
 	
 	public FishStockCompany(){
 		super();
@@ -86,14 +76,6 @@ public class FishStockCompany {
 
 	public void setTotalUsersRated(int totalUsersRated) {
 		this.totalUsersRated = totalUsersRated;
-	}
-	
-	public Set<FishStockUser> getUsersWatching() {
-		return usersWatching;
-	}
-
-	public void setUsersWatching(Set<FishStockUser> usersWatching) {
-		this.usersWatching = usersWatching;
 	}
 
 	@Override

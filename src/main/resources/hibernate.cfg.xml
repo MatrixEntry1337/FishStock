@@ -24,6 +24,7 @@
 
 		<mapping class="com.KOIFish.FishStock.beans.FishStockUser"></mapping>
 		<mapping class="com.KOIFish.FishStock.beans.FishStockCompany"></mapping>
+		<mapping class="com.KOIFish.FishStock.beans.FishStockTimeperiod"></mapping>
 
 	</session-factory>
 </hibernate-configuration>

@@ -32,15 +32,19 @@ CREATE TABLE Fish_Companies
         CompanyId       INT NOT NULL AUTO_INCREMENT,
         Name            NVARCHAR(100) NOT NULL,
         Symbol          NVARCHAR(10) NOT NULL,
-        TotalRating     INT,
-        TotalUsersRated INT,
+        TotalRating     INT DEFAULT 0,
+        TotalUsersRated INT DEFAULT 0,
         CONSTRAINT PK_Fish_Companies PRIMARY KEY (CompanyId)
 );
 
 CREATE TABLE Fish_Watchlist
 (
-        UserId    INT NOT NULL,
-        CompanyId INT NOT NULL
+		TimePeriodId INT NOT NULL AUTO_INCREMENT,
+        UserId       INT NOT NULL,
+        CompanyId    INT NOT NULL,
+        TimeStart    DATETIME,
+        TimeEnd      DATETIME,
+        CONSTRAINT PK_Fish_Watchlist PRIMARY KEY (TimePeriodId)
 );
 
 /**
@@ -48,7 +52,7 @@ Setting up autoincrement
 */
 ALTER TABLE Fish_Users AUTO_INCREMENT=1;
 ALTER TABLE Fish_Companies AUTO_INCREMENT=1;
-
+ALTER TABLE Fish_Watchlist AUTO_INCREMENT=1;
 /*
 FK Constraints
 */
