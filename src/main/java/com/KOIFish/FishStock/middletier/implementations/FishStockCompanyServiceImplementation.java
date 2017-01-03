@@ -1,6 +1,7 @@
 package com.KOIFish.FishStock.middletier.implementations;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -22,9 +23,9 @@ public class FishStockCompanyServiceImplementation implements FishStockCompanySe
 	public void setCompanyDAO(FishStockFacade facade){ this.facade = facade;}
 
 	@Override
-	public Set<FishStockCompany> getAllCompanies() throws IOException {
+	public Map<String,Stock> getAllCompanies() throws IOException {
 		Set<FishStockCompany> set = facade.getAllCompanies();
-		
+		List<FishStockCompany> list = null;
 		int size = set.size();
 		String[] symbols = new String[size];
 		int current = 0;
@@ -34,9 +35,11 @@ public class FishStockCompanyServiceImplementation implements FishStockCompanySe
 		}
 		
 		// API call - Yahoo 
-		Map<String, Stock> stocks = YahooFinance.get(symbols);
+		Map<String, Stock> stocks = YahooFinance.get(symbols, true);
+//		System.out.println(stocks.get("INTC").getName());
 		System.out.println("Stocks:" + stocks.toString());
-		return set;
+		
+		return stocks;
 	}
-
 }
+
