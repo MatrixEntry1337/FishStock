@@ -12,6 +12,7 @@ import com.KOIFish.FishStock.beans.FishStockUser;
 public class FishStockUserDAOImplementationIlya implements FishStockUserDAO {
 
 	/**
+	 * 
 	 * Get user from db by username. If user with given username does not exist, return null.
 	 * @param session session created by facade
 	 * @param username username
