@@ -13,6 +13,8 @@ import yahoofinance.Stock;
  * Business delegate class that delegate all the calls to services.
  * 
  * @author Ilya Siarheyeu
+ * @author Kyle Chang Fatt
+ * @author Osher Cohen
  *
  */
 @Component(value="businessdelegate")
