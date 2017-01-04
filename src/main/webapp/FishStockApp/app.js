@@ -3,7 +3,7 @@ var fishStockApp = angular.module('FishStockApp',
 		['publicModule','ui.router', 'loginModule', 'stocksModule']);
 
 // config for app
-fishStockApp.config(function($stateProvider, $urlRouterProvider){
+fishStockApp.config(function($stateProvider, $locationProvider, $urlRouterProvider){
 	
 	// go to home on startup
 	$urlRouterProvider.otherwise('login');
@@ -25,4 +25,7 @@ fishStockApp.config(function($stateProvider, $urlRouterProvider){
 			templateUrl: "FishStockApp/templates/stocks.html",
 			controller: "stocksCtrl"
 		});
+	
+	// use the HTML5 History API
+    $locationProvider.html5Mode(true);
 });
