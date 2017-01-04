@@ -1,1 +1,0 @@
-ratingModule.controller();
