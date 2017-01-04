@@ -9,7 +9,7 @@ loginModule.controller('loginCtrl', function($scope, loginFtry, $log){
 	
 	$scope.version = loginFtry.getVersion();
 	
-	$scope.loginFormData = {}
+	$scope.loginFormData = {};
 	
 	$scope.login = function(){
 		successFunc = function(response){
@@ -20,6 +20,5 @@ loginModule.controller('loginCtrl', function($scope, loginFtry, $log){
 			console.log(response);
 		};
 		loginFtry.login($scope.loginFormData, successFunc, failureFunc);
-	}
-	
+	};
 });

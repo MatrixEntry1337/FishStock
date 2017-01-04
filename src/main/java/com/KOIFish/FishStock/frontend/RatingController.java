@@ -15,7 +15,7 @@ public class RatingController {
     public void setDelegate(FishStockBusinessDelegate delegate) { this.delegate = delegate; }
     @ResponseBody
     @RequestMapping(value={"/addRating.do"}, method={RequestMethod.POST}, consumes={"application/json"}, produces={"application/json"})
-    public void modifyCompanyRating(@RequestParam(value="rating") int rating, @RequestParam(value="companyId")int companyId) {
+    public void modifyCompanyRating(@RequestParam(value="rating") int rating, @RequestParam(value="companyId") int companyId) {
         delegate.modifyCompanyRating(rating, companyId);
     }
 }
