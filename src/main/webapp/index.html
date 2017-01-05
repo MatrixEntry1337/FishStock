@@ -5,7 +5,7 @@
 <title>FishStock App</title>
 
 <!-- base href -->
-<base href="/FishStock/">
+<!--  <base href="/FishStock/"> -->
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
@@ -48,19 +48,24 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"
 		crossorigin="anonymous"></script>
 
-	<!-- Angular Modules w/ Factories -->
-	<script type="text/javascript" src="FishStockApp/app.js"></script>
+	<!-- Angular Config -->
+	<script type="text/javascript" src="Ang/AppConfig/modules.js"></script>
+	<script type="text/javascript" src="Ang/AppConfig/routeConfig.js"></script>	
 	
-	
-	<script type="text/javascript" src="FishStockApp/PublicModule/public.js"></script>
-	<script type="text/javascript" src="FishStockApp/LoginModule/login.js"></script>
-	<script type="text/javascript" src="FishStockApp/StocksModule/stocks.js"></script>
 	<!-- Add Modules/Factories here -->
 	
+	<!-- Angular Services -->
+	<script type="text/javascript" src="Ang/Services/authFtry.js"></script>
+	<script type="text/javascript" src="Ang/Services/publicFtry.js"></script>
+	<script type="text/javascript" src="Ang/Services/ratingFtry.js"></script>
+	<script type="text/javascript" src="Ang/Services/stocksFtry.js"></script>
+	<!-- Add services here -->
+	
 	<!-- Angular Controllers -->
-	<script type="text/javascript" src="FishStockApp/PublicModule/publicController.js"></script>
-	<script type="text/javascript" src="FishStockApp/LoginModule/loginController.js"></script>
-	<script type="text/javascript" src="FishStockApp/StocksModule/stocksController.js"></script>
+	<script type="text/javascript" src="Ang/Controllers/authController.js"></script>
+	<script type="text/javascript" src="Ang/Controllers/publicController.js"></script>
+	<script type="text/javascript" src="Ang/Controllers/ratingController.js"></script>
+	<script type="text/javascript" src="Ang/Controllers/stocksController.js"></script>
 	<!-- Add controllers here -->
 	
 </body>

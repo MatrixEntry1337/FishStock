@@ -1,5 +1,8 @@
-var ratingModule = angular.module('ratingModule', []);
-ratingModule.factory('ratingFtry', function ($http, $log) {
+/**
+ * 
+ */
+angular.module('rating')
+.factory('ratingFtry', function ($http, $log) {
     $log.log("Started rating Factory");
     var req = {
         method: 'POST',

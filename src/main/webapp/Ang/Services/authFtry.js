@@ -1,21 +1,23 @@
-// This is a test module
-// Public facing data
-var publicModule = angular.module('publicModule', []);
-
-// $log allows you to do console logs
-// $http is your ajax call
-// Factories and Services are the same thing
-// This is your model in mvc
-publicModule.factory('publicFtry', function($http, $log){
-	$log.log("Started Public Factory");
+/**
+ * authentication factory
+ * - handles all authentication requests  
+ */
+angular.module('auth')
+.factory('authFtry', function($http, $log){
+	$log.log("Started Auth Factory");
 	
 	var public = {};
 	
-	var data ={
+	var data = {
 			appName: "FishStock",
 			authors : "Kyle Chang Fatt, Osher Cohen, Ilya Siarheyeu",
 			about: "This is a stock watch application built using Java EE and AngularJS",
 			version: 0.1
+	};
+	
+	
+	public.login = function (loginFormData, successFunc, failureFunc) {
+		$http.post('/FishStock/login.do', loginFormData).then(successFunc, failureFunc);
 	};
 	
 	public.getAppName = function(){

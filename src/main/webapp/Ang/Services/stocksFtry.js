@@ -1,6 +1,8 @@
-var stocksModule = angular.module('stocksModule', []);
-
-stocksModule.factory('stocksFtry', function($http, $log){
+/**
+ * 
+ */
+angular.module('stocks')
+.factory('stocksFtry', function($http, $log){
 	var stocks = {};
 	
 	stocks.allStocks = {};

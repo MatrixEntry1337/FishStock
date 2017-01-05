@@ -19,5 +19,5 @@
 	</bean>
 
 	<mvc:resources mapping="/pages/**" location="/" />
-	<mvc:resources location="/FishStockApp/" mapping="/FishStockApp/**"/>
+	<mvc:resources location="/Ang/" mapping="/Ang/**"/>
 </beans>

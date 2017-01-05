@@ -1,4 +1,5 @@
-publicModule.controller('publicCtrl', function($scope, publicFtry, $log, $http){
+angular.module('public')
+.controller('publicCtrl', function($scope, publicFtry, $log, $http){
 	$log.log("Started Public Controller");
 	
 	$scope.appName = publicFtry.getAppName();
