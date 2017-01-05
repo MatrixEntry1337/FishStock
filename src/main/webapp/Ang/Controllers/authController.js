@@ -2,14 +2,6 @@ angular.module('auth')
 .controller('authCtrl', function($scope, authFtry, $log){
 	$log.log("Started Login Controller");
 	
-	$scope.appName = authFtry.getAppName();
-	
-	$scope.about = authFtry.getAbout();
-	
-	$scope.authors = authFtry.getAuthors();
-	
-	$scope.version = authFtry.getVersion();
-	
 	$scope.loginFormData = {};
 	
 	$scope.login = function(){
