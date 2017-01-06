@@ -1,13 +1,13 @@
 package com.KOIFish.FishStock.middletier;
 
-import java.io.IOException;
-import java.util.Map;
+import com.KOIFish.FishStock.beans.FishStockUser;
+import com.KOIFish.FishStock.beans.Rating;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import com.KOIFish.FishStock.beans.FishStockUser;
-
 import yahoofinance.Stock;
+
+import java.io.IOException;
+import java.util.Map;
 
 /**
  * Business delegate class that delegate all the calls to services.
@@ -35,8 +35,8 @@ public class FishStockBusinessDelegate {
 		return companyService.getAllCompanies();
 	}
 
-    public void modifyCompanyRating(int rating, int companyId) {
-	    userService.modifyCompanyRating(rating, companyId);
+    public void modifyCompanyRating(Rating rating) {
+	    userService.modifyCompanyRating(rating);
     }
 
 }
