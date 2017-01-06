@@ -7,11 +7,17 @@ import static org.junit.Assert.assertNull;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 import com.KOIFish.FishStock.beans.FishStockUser;
-import com.KOIFish.FishStock.configuration.FishStockGlobalConfiguration;
 import com.KOIFish.FishStock.middletier.FishStockBusinessDelegate;
+
+/**
+ * Testing the whole chain, delegate -> dao
+ * 
+ * @author Ilya Siarheyeu
+ *
+ */
 
 public class FishStockBusinessDelegateToUserServiceTest {
 private static ApplicationContext context;
@@ -19,7 +25,7 @@ private static ApplicationContext context;
 
 	@BeforeClass
 	public static void preClass() {
-		context = new AnnotationConfigApplicationContext(FishStockGlobalConfiguration.class);
+		context = new FileSystemXmlApplicationContext("src/main/webapp/WEB-INF/beans.xml");
 	}
 	
 	@Test

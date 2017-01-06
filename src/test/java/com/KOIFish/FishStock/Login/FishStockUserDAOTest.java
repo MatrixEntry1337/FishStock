@@ -2,31 +2,23 @@ package com.KOIFish.FishStock.Login;
 
 import static org.junit.Assert.*;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
-import org.springframework.web.context.support.XmlWebApplicationContext;
 
 import com.KOIFish.FishStock.backend.FishStockUserDAO;
 import com.KOIFish.FishStock.beans.FishStockUser;
-import com.KOIFish.FishStock.configuration.FishStockBackEndConfiguration;
-import com.KOIFish.FishStock.configuration.FishStockGlobalConfiguration;
 
+/**
+ * Testing userDao getUserBy[] methods
+ * 
+ * @author Ilya Siarheyeu
+ *
+ */
 public class FishStockUserDAOTest {
 
 	private static ApplicationContext context;
-
 
 	@BeforeClass
 	public static void preClass() {

@@ -8,19 +8,24 @@ import static org.junit.Assert.assertNull;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 import com.KOIFish.FishStock.backend.FishStockFacade;
 import com.KOIFish.FishStock.beans.FishStockUser;
-import com.KOIFish.FishStock.configuration.FishStockBackEndConfiguration;
 
+/**
+ * Testing integration of facade with userdao
+ * 
+ * @author Ilya Siarheyeu
+ *
+ */
 public class FishStockFacadeToUserDAOTest {
 
 	private static ApplicationContext context;
 
 	@BeforeClass
 	public static void preClass() {
-		context = new AnnotationConfigApplicationContext(FishStockBackEndConfiguration.class);
+		context = new FileSystemXmlApplicationContext("src/main/webapp/WEB-INF/beans.xml");
 	}
 	
 	@Test
