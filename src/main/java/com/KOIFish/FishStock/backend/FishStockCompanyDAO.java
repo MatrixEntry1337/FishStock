@@ -6,8 +6,8 @@ import org.hibernate.Session;
 import java.util.Set;
 
 public interface FishStockCompanyDAO {
-    int getAverageRatingByCompanyId(Session session, int id);
-    Set<FishStockCompany> getAllCompanies(Session session);
-    void modifyRating(Session session, int rating, int companyId);
+    int getAverageRatingByCompanyId(int id);
+    Set<FishStockCompany> getAllCompanies();
+    void modifyRating(int rating, int companyId);
 }
 

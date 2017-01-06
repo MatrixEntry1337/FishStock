@@ -6,111 +6,57 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Set;
 
 /**
- * Facade class that redirects calls to DAOs while handling sessions and transactions.
+ * Facade class that redirects calls to DAOs while handling sessions and
+ * transactions.
  * 
  * @author Ilya Siarheyeu
  *
  */
-@Component(value="facade")
+@Component(value = "facade")
 public class FishStockFacade {
 	private FishStockUserDAO userDAO;
+
 	@Autowired
-	public void setUserDAO(FishStockUserDAO userDAO) { this.userDAO = userDAO; }
+	public void setUserDAO(FishStockUserDAO userDAO) {
+		this.userDAO = userDAO;
+	}
 
 	private FishStockCompanyDAO companyDAO;
-	@Autowired
-	public void setCompanyDAO(FishStockCompanyDAO companyDAO){ this.companyDAO = companyDAO; }
 
-	private FishStockSessionGiver sessionGiver;
 	@Autowired
-	public void setSessionGiver(FishStockSessionGiver sessionGiver) { this.sessionGiver = sessionGiver; }
+	public void setCompanyDAO(FishStockCompanyDAO companyDAO) {
+		this.companyDAO = companyDAO;
+	}
 
-	public FishStockFacade() { super(); }
+	public FishStockFacade() {
+		super();
+	}
 
 	public FishStockUser getUserByUsername(String username) {
-		Session session = null; 
-		Transaction tx = null;
-		FishStockUser result = null;
-		try {
-			session = sessionGiver.getNewSession();
-			tx = session.beginTransaction();
-			result = userDAO.getUserByUsername(session, username);
-			tx.commit();
-		}
-		catch (RuntimeException e) {
-			if (tx != null) {
-				tx.rollback();
-			}
-		}
-		finally{
-			session.disconnect();
-			session.close();
-		}
+
+		FishStockUser result = userDAO.getUserByUsername(username);
 		return result;
 	}
 
 	public FishStockUser getUserById(Integer id) {
-		Session session = null; 
-		Transaction tx = null;
-		FishStockUser result = null;
-		try {
-			session = sessionGiver.getNewSession();
-			tx = session.beginTransaction();
-			result = userDAO.getUserById(session, id);
-			tx.commit();
-		}
-		catch (RuntimeException e) {
-			if (tx != null) {
-				tx.rollback();
-			}
-		}
-		finally{
-			session.disconnect();
-			session.close();
-		}
+
+		FishStockUser result = userDAO.getUserById(id);
 		return result;
 	}
 
-	public Set<FishStockCompany> getAllCompanies(){
-		Session session = null;
-		Transaction tx = null;
-		Set<FishStockCompany> set = null;
-		try{
-			session = sessionGiver.getNewSession();
-			tx = session.beginTransaction();
-			set = companyDAO.getAllCompanies(session);
-			tx.commit();
-		}catch(RuntimeException e){
-			if(tx != null){
-				tx.rollback();
-			}
-		}finally{
-			session.disconnect();
-			session.close();
-		}
+	public Set<FishStockCompany> getAllCompanies() {
+
+		Set<FishStockCompany> set = companyDAO.getAllCompanies();
 		return set;
 	}
+
 	public void modifyCompanyRating(int rating, int companyId) {
-		Session session = null;
-		Transaction tx = null;
-		try {
-		    session = sessionGiver.getNewSession();
-		    tx = session.beginTransaction();
-		    companyDAO.modifyRating(session, rating, companyId);
-		    tx.commit();
-        }catch (RuntimeException e) {
-		    if(tx != null) {
-		        tx.rollback();
-            }
-        }finally {
-		    if(session != null) {
-                session.disconnect();
-                session.close();
-            }
-        }
-    }
+
+		companyDAO.modifyRating(rating, companyId);
+	}
 }
