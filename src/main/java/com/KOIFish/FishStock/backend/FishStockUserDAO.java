@@ -1,7 +1,5 @@
 package com.KOIFish.FishStock.backend;
 
-import org.hibernate.Session;
-
 import com.KOIFish.FishStock.beans.FishStockUser;
 
 /**
@@ -11,8 +9,7 @@ import com.KOIFish.FishStock.beans.FishStockUser;
  *
  */
 public interface FishStockUserDAO {
-	
+
 	public FishStockUser getUserByUsername(String username);
 	public FishStockUser getUserById(Integer id);
-
 }

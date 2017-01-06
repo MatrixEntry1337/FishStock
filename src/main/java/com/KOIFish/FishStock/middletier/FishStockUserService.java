@@ -1,6 +1,7 @@
 package com.KOIFish.FishStock.middletier;
 
 import com.KOIFish.FishStock.beans.FishStockUser;
+import com.KOIFish.FishStock.beans.Rating;
 
 /**
  * Interface for user service.
@@ -11,5 +12,5 @@ import com.KOIFish.FishStock.beans.FishStockUser;
 public interface FishStockUserService {
 	
 	public FishStockUser authenticateUser(String username, String password);
-	void modifyCompanyRating(int rating, int companyId);
+	void modifyCompanyRating(Rating rating);
 }

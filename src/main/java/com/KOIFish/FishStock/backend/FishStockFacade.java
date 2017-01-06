@@ -2,6 +2,7 @@ package com.KOIFish.FishStock.backend;
 
 import com.KOIFish.FishStock.beans.FishStockCompany;
 import com.KOIFish.FishStock.beans.FishStockUser;
+import com.KOIFish.FishStock.beans.Rating;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,8 +56,9 @@ public class FishStockFacade {
 		return set;
 	}
 
-	public void modifyCompanyRating(int rating, int companyId) {
 
-		companyDAO.modifyRating(rating, companyId);
+	public void modifyCompanyRating(Rating rating) {
+
+		companyDAO.modifyRating(rating);
 	}
 }
