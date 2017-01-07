@@ -7,13 +7,18 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
+/**
+ * Bean that holds user info
+ * 
+ * @author Ilya Siarheyeu
+ *
+ */
 @Entity
 @Table(name="Fish_Users")
 public class FishStockUser {
@@ -31,9 +36,11 @@ public class FishStockUser {
 	private String email;
 	
 	@Column(name="Username", nullable=false, length=20)
+	@JsonIgnore
 	private String username;
 	
 	@Column(name="Password", nullable=false, length=150)
+	@JsonIgnore
 	private String password;
 	
 	@OneToMany(fetch=FetchType.EAGER, mappedBy="user")

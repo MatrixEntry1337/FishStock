@@ -19,15 +19,11 @@ public class LoginController {
 
 	@ResponseBody
 	@RequestMapping(value={"/login.do"}, method={RequestMethod.POST}, consumes={"application/json"}, produces={"application/json"})
-	public String login(@RequestBody FishStockUser user) {
+	public FishStockUser login(@RequestBody FishStockUser user) {
 		
 		user = delegate.authenticateUser(user.getUsername(), user.getPassword());
 		
-		if (user == null) {
-			return "{ \"result\" : \"failure\" }";
-		}
-		
-		return "{ \"result\" : \"success\" }";
+		return user;
 	}
 	
 }
