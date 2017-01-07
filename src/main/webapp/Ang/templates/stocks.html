@@ -1,18 +1,33 @@
 <div class="container">
+
 	<div class="row">
-		<div class="col-md-4 col-sm-5 ">
-			<div class="panel panel-primary" ng-repeat="stock in allStocks">
-				<div class="panel-heading">{{ stock.name }} - {{ stock.symbol }}</div>
+		<div class="col-md-4">
+			<div class="list-group">
+			  <a class="list-group-item" ng-repeat="stock in allStocks" ng-click="selectStock(stock)">
+			    {{ stock.name }}
+			  </a>
+			</div>	
+		</div>
+		<div class="col-md-8" ng-show="selectedStock">
+			<div class="panel panel">
 				<div class="panel-body">
-					<p>Stock Exchange: {{ stock.stockExchange }}</p>
-					<p>Open: {{ stock.quote.open }}<p>
-					<p>PreviousClose: {{ stock.quote.previousClose }}</p>
-					<p>Day High: {{ stock.quote.dayHigh }}</p>
-					<p>Day Low: {{ stock.quote.dayLow }}</p>
-					<p>Year High: {{ stock.quote.yearHigh }}</p>
-					<p>Year Low: {{ stock.quote.yearLow }}</p>
+					<p>Stock Exchange: {{ selectedStock.stockExchange }}</p>
+					<p>Open: {{ selectedStock.quote.open }}<p>
+					<p>PreviousClose: {{ selectedStock.quote.previousClose }}</p>
+					<p>Day High: {{ selectedStock.quote.dayHigh }}</p>
+					<p>Day Low: {{ selectedStock.quote.dayLow }}</p>
+					<p>Year High: {{ selectedStock.quote.yearHigh }}</p>
+					<p>Year Low: {{ selectedStock.quote.yearLow }}</p>
+					<p>Check: {{ selectedStock.history[0].date | date }}</p>
+					<p ng-repeat="each in dates">Date: {{ each.date | date}}</p>
+					<canvas id="line" class="chart chart-line" chart-data="historyData"
+						chart-labels="historyLabels" chart-series="historySeries" 
+						chart-options="historyOptions" chart-dataset-override="historyDatasetOverride"
+						 chart-click="historyOnClick" chart-colors="historyColors">
+					</canvas>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+

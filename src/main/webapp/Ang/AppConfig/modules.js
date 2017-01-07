@@ -1,6 +1,6 @@
 // main angular module 
 angular.module('FishStockApp', 
-		['ui.router', 'public', 'auth', 'stocks', 'rating']);
+		['ui.router','chart.js', 'public', 'auth', 'stocks', 'rating']);
 
 // public facing module
 angular.module('public', []);
