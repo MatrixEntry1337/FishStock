@@ -7,11 +7,14 @@ import org.hibernate.Session;
 import java.util.Set;
 
 public interface FishStockCompanyDAO {
-
+	
     int getAverageRatingByCompanyId(int id);
+    
     Set<FishStockCompany> getAllCompanies();
+    
     void modifyRating(Rating rating);
+    
     FishStockCompany getCompany(int companyId);
-
+    
 }
 
