@@ -5,19 +5,18 @@ angular.module('stocks')
 .factory('stocksFtry', function($http, $log){
 	var stocks = {};
 	
-	stocks.allStocks = {};
+	stocks.data = {};
 	
 	stocks.getAll = function(){
 		$http.post('/FishStock/getAll.do')
 			.then(
 				function(response){
 					$log.log("Get all response object: ");
-					$log.log("Success status: " + response.status);
-					angular.forEach(response.data, function(each){
+					$log.log(response.data);
+					angular.forEach(response.data.stocks, function(each){
 						each.history.reverse();
 					});
-					angular.copy(response.data, stocks.allStocks);
-					$log.log(stocks.allStocks);
+					angular.copy(response.data, stocks.data);
 				},
 				function(response){
 					$log.log("There was an error, error status: " + response.status);

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.KOIFish.FishStock.backend.FishStockFacade;
 import com.KOIFish.FishStock.beans.FishStockCompany;
+import com.KOIFish.FishStock.beans.FishStockTransferCompanies;
 import com.KOIFish.FishStock.middletier.FishStockCompanyService;
 
 import yahoofinance.Stock;
@@ -23,11 +24,15 @@ public class FishStockCompanyServiceImplementation implements FishStockCompanySe
 	public void setCompanyDAO(FishStockFacade facade){ this.facade = facade;}
 
 	@Override
-	public Map<String,Stock> getAllCompanies() throws IOException {
+	public FishStockTransferCompanies getAllCompanies() throws IOException {
 		Set<FishStockCompany> set = facade.getAllCompanies();
-		List<FishStockCompany> list = null;
+		
+		// set size of array for symbols and ids
 		int size = set.size();
 		String[] symbols = new String[size];
+		int[] ids = new int[size];
+		
+		// grab symbols from set
 		int current = 0;
 		for(FishStockCompany com: set){
 			symbols[current] = com.getSymbol();
@@ -36,10 +41,9 @@ public class FishStockCompanyServiceImplementation implements FishStockCompanySe
 		
 		// API call - Yahoo 
 		Map<String, Stock> stocks = YahooFinance.get(symbols, true);
-//		System.out.println(stocks.get("INTC").getName());
-		System.out.println("Stocks:" + stocks.toString());
+		FishStockTransferCompanies transferData = new FishStockTransferCompanies(set, stocks);
 		
-		return stocks;
+		return transferData;
 	}
 }
 
