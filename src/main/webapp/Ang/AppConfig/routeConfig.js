@@ -1,7 +1,7 @@
 // config for app
 angular.module('FishStockApp')
 	.config(function($stateProvider, $locationProvider, $urlRouterProvider){
-	
+		
 	// go to home on startup
 	$urlRouterProvider.otherwise('app/home');
 	

@@ -18,9 +18,16 @@
 					<p>Day Low: {{ selectedStock.quote.dayLow }}</p>
 					<p>Year High: {{ selectedStock.quote.yearHigh }}</p>
 					<p>Year Low: {{ selectedStock.quote.yearLow }}</p>
-					<div id="myChart"></div>
+					<p>Check: {{ selectedStock.history[0].date | date }}</p>
+					<p ng-repeat="each in dates">Date: {{ each.date | date}}</p>
+					<canvas id="line" class="chart chart-line" chart-data="historyData"
+						chart-labels="historyLabels" chart-series="historySeries" 
+						chart-options="historyOptions" chart-dataset-override="historyDatasetOverride"
+						 chart-click="historyOnClick" chart-colors="historyColors">
+					</canvas>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
