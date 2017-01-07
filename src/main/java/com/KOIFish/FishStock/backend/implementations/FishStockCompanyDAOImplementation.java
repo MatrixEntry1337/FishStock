@@ -57,6 +57,10 @@ public class FishStockCompanyDAOImplementation implements FishStockCompanyDAO {
        return (FishStockCompany) criteria.uniqueResult();
     }
 
+	@Override
+	@Transactional(isolation=Isolation.READ_COMMITTED,
+					propagation=Propagation.REQUIRES_NEW,
+					rollbackFor=Exception.class)
     public void modifyRating(Rating rating) {
     	Session session  = sessionFactory.getCurrentSession();
         int totalRating;

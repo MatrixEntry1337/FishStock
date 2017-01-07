@@ -1,5 +1,7 @@
 package com.KOIFish.FishStock.frontend;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,15 +21,32 @@ public class LoginController {
 
 	@ResponseBody
 	@RequestMapping(value={"/login.do"}, method={RequestMethod.POST}, consumes={"application/json"}, produces={"application/json"})
-	public String login(@RequestBody FishStockUser user) {
+	public String login(@RequestBody FishStockUser user, HttpSession session) {
 		
 		user = delegate.authenticateUser(user.getUsername(), user.getPassword());
 		
+		session.setAttribute("user_obj", user);
+		
 		if (user == null) {
 			return "{ \"result\" : \"failure\" }";
-		}
+		}		
 		
 		return "{ \"result\" : \"success\" }";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value={"/getuser.do"}, method={RequestMethod.GET}, produces={"application/json"})
+	public FishStockUser getUser(HttpSession session) {
+		
+		session.getAttribute("user_obj").getClass();
+		
+		return (FishStockUser)session.getAttribute("user_obj"); 
+	}
+	
+	@RequestMapping(value={"/logout.do"}, method={RequestMethod.GET})
+	public void logout(HttpSession session) {
+		
+		session.setAttribute("user_obj", null);
 	}
 	
 }
