@@ -35,6 +35,9 @@
 		<property name="username" value="FishStockUser" />
 		<property name="password" value="6t7PDuNYqF" />
 		<property name="url" value="jdbc:mysql://mysqldbinstance.cfqsiykloeqw.us-east-1.rds.amazonaws.com:3306/FishStock"></property>
+		<property name="poolPreparedStatements"><value>true</value></property>
+        <property name="maxActive"><value>10</value></property>
+        <property name="maxIdle"><value>10</value></property>
 	</bean>
 	
 	<!-- Session factory -->
