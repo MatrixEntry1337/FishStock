@@ -53,10 +53,15 @@ public class FishStockAddCompanytoWatchDAOTest {
 	@Test(expected=Exception.class)
 	public void addStockToWatchUniqueViolationTest() {
 		FishStockTimePeriodDAO dao = context.getBean("timePeriodDAO", FishStockTimePeriodDAO.class);
+		
+		// create user
 		FishStockUser user = new FishStockUser();
 		user.setId(1);
+		
+		// create company
 		FishStockCompany company = new FishStockCompany();
 		company.setCompanyId(9);
+		
 		dao.addCompanytoWatch(user, company);
 	}
 }

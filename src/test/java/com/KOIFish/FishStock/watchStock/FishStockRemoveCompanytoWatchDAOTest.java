@@ -47,4 +47,19 @@ private static ApplicationContext context;
 		assertTrue(!set.contains(check));
 		
 	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void removeStockToWatchViolationTest(){
+		FishStockTimePeriodDAO dao = context.getBean("timePeriodDAO", FishStockTimePeriodDAO.class);
+		
+		// create user
+		FishStockUser user = new FishStockUser();
+		user.setId(1);
+		
+		// create company
+		FishStockCompany company = new FishStockCompany();
+		company.setCompanyId(2);
+		
+		dao.removeCompanyFromWatch(user, company);
+	}
 }
