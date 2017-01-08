@@ -1,7 +1,12 @@
 package com.KOIFish.FishStock.backend.implementations;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Isolation;
@@ -21,7 +26,7 @@ public class FishStockTimPeriodDAOImplementation implements FishStockTimePeriodD
 	public void setSessionFactory(SessionFactory sessionFactory){ this.sessionFactory = sessionFactory; }
 	
 	@Override
-	@Transactional (isolation=Isolation.REPEATABLE_READ,
+	@Transactional (isolation=Isolation.READ_COMMITTED,
 					propagation=Propagation.REQUIRES_NEW,
 					rollbackFor=Exception.class)
 	public void addCompanytoWatch(FishStockUser user, FishStockCompany company) {
@@ -33,6 +38,31 @@ public class FishStockTimPeriodDAOImplementation implements FishStockTimePeriodD
 		session.save(timePeriod);
 	}
 	
+	@Override
+	@Transactional (isolation=Isolation.REPEATABLE_READ,
+					propagation=Propagation.REQUIRES_NEW,
+					rollbackFor=Exception.class)
+	public void removeCompanyFromWatch(FishStockUser user, FishStockCompany company){
+		Session session = sessionFactory.getCurrentSession();
+		
+		Criteria criteria = session.createCriteria(FishStockTimeperiod.class);
+		criteria.add(Restrictions.eq("user", user));
+		criteria.add(Restrictions.eq("company", company));
+		FishStockTimeperiod timePeriod = (FishStockTimeperiod) criteria.uniqueResult();
+		
+		session.delete(timePeriod);
+	}
 	
+	@Override
+	@SuppressWarnings("unchecked")
+	@Transactional(isolation=Isolation.READ_UNCOMMITTED,
+					propagation=Propagation.REQUIRES_NEW,
+					rollbackFor=Exception.class)
+	public Set<FishStockTimeperiod> getAllWatchList(){
+		Session session = sessionFactory.getCurrentSession();
+		
+		Criteria criteria = session.createCriteria(FishStockTimeperiod.class);
+		return new HashSet<>(criteria.list());
+	}
 	
 }
