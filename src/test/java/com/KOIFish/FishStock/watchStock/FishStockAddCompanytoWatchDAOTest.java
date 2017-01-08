@@ -40,7 +40,7 @@ public class FishStockAddCompanytoWatchDAOTest {
 		
 		// remove and add company
 		dao.removeCompanyFromWatch(user, company);
-		dao.addCompanytoWatch(user, company);
+		dao.addCompanyToWatch(user, company);
 		
 		
 		FishStockTimeperiod tp = new FishStockTimeperiod();
@@ -62,6 +62,6 @@ public class FishStockAddCompanytoWatchDAOTest {
 		FishStockCompany company = new FishStockCompany();
 		company.setCompanyId(9);
 		
-		dao.addCompanytoWatch(user, company);
+		dao.addCompanyToWatch(user, company);
 	}
 }

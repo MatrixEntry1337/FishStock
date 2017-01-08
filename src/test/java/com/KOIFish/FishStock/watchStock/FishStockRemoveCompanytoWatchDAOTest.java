@@ -37,7 +37,7 @@ private static ApplicationContext context;
 		company.setCompanyId(4);
 		company.setSymbol("FB");
 		
-		dao.addCompanytoWatch(user, company);
+		dao.addCompanyToWatch(user, company);
 		dao.removeCompanyFromWatch(user, company);
 		
 		FishStockTimeperiod check = new FishStockTimeperiod();
