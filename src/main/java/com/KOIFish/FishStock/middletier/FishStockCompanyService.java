@@ -1,12 +1,11 @@
 package com.KOIFish.FishStock.middletier;
 
 import java.io.IOException;
-import java.util.Map;
 
-import yahoofinance.Stock;
+import com.KOIFish.FishStock.beans.FishStockTransferCompanies;
 
 public interface FishStockCompanyService {
 	
-	public Map<String, Stock> getAllCompanies() throws IOException;
+	public FishStockTransferCompanies getAllCompanies() throws IOException;
 	
 }

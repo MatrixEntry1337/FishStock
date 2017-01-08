@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.KOIFish.FishStock.beans.FishStockTransferCompanies;
 import com.KOIFish.FishStock.middletier.FishStockBusinessDelegate;
 
 import yahoofinance.Stock;
@@ -22,8 +23,8 @@ public class StockController {
 
 	@ResponseBody
 	@RequestMapping(value={"/getAll.do"}, method={RequestMethod.POST}, produces={"application/json"})
-	public Map<String, Stock> getAll() throws IOException{
-		Map<String, Stock> stocks = delegate.getAllCompanies();
-		return stocks;
+	public FishStockTransferCompanies getAll() throws IOException{
+		FishStockTransferCompanies transferData = delegate.getAllCompanies();
+		return transferData;
 	}
 }

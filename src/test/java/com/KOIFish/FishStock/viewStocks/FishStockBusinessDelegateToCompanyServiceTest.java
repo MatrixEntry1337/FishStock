@@ -4,18 +4,13 @@ package com.KOIFish.FishStock.viewStocks;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import java.util.Map;
-
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
-import com.KOIFish.FishStock.configuration.FishStockGlobalConfiguration;
+import com.KOIFish.FishStock.beans.FishStockTransferCompanies;
 import com.KOIFish.FishStock.middletier.FishStockBusinessDelegate;
-
-import yahoofinance.Stock;
 
 public class FishStockBusinessDelegateToCompanyServiceTest {
 
@@ -31,10 +26,12 @@ public class FishStockBusinessDelegateToCompanyServiceTest {
 	public void getAllCompanies() throws Exception{
 		FishStockBusinessDelegate bd 
 			= context.getBean("businessdelegate", FishStockBusinessDelegate.class);
-		Map<String, Stock> stocks = bd.getAllCompanies();
-//		System.out.println(set);
-		assertNotNull(stocks);
-		assertTrue(stocks.size() == 10);
+		FishStockTransferCompanies transferData = bd.getAllCompanies();
+		
+		assertNotNull(transferData.getCompanies());
+		assertNotNull(transferData.getStocks());
+		assertTrue(transferData.getCompanies().size() == 10);
+		assertTrue(transferData.getStocks().keySet().size() == 10);
 	}
 	
 	

@@ -6,7 +6,7 @@ angular.module('stocks')
 		];
 	
 	$scope.getAll = stocksFtry.getAll();
-	$scope.allStocks = stocksFtry.allStocks;
+	$scope.data = stocksFtry.data;
 	$scope.selectStock = function(stock){
 		$scope.selectedStock = stock;
 		setInfo(stock);
