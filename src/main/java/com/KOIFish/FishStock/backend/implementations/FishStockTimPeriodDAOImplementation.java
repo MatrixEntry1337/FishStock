@@ -29,7 +29,7 @@ public class FishStockTimPeriodDAOImplementation implements FishStockTimePeriodD
 	@Transactional (isolation=Isolation.READ_COMMITTED,
 					propagation=Propagation.REQUIRES_NEW,
 					rollbackFor=Exception.class)
-	public void addCompanytoWatch(FishStockUser user, FishStockCompany company) {
+	public void addCompanyToWatch(FishStockUser user, FishStockCompany company) {
 		Session session = sessionFactory.getCurrentSession();
 		
 		FishStockTimeperiod timePeriod = new FishStockTimeperiod();

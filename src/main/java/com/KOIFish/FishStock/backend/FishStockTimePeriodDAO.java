@@ -8,7 +8,7 @@ import com.KOIFish.FishStock.beans.FishStockUser;
 
 public interface FishStockTimePeriodDAO {
 
-	void addCompanytoWatch(FishStockUser user, FishStockCompany company);
+	void addCompanyToWatch(FishStockUser user, FishStockCompany company);
 
 	void removeCompanyFromWatch(FishStockUser user, FishStockCompany company);
 

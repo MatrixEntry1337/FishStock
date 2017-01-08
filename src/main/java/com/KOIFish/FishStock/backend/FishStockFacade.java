@@ -1,12 +1,13 @@
 package com.KOIFish.FishStock.backend;
 
-import com.KOIFish.FishStock.beans.FishStockCompany;
-import com.KOIFish.FishStock.beans.FishStockUser;
-import com.KOIFish.FishStock.beans.Rating;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.Set;
+import com.KOIFish.FishStock.beans.FishStockCompany;
+import com.KOIFish.FishStock.beans.FishStockUser;
+import com.KOIFish.FishStock.beans.Rating;
 
 /**
  * Facade class that redirects calls to DAOs while handling sessions and
@@ -28,6 +29,10 @@ public class FishStockFacade {
 	@Autowired
 	public void setCompanyDAO(FishStockCompanyDAO companyDAO) { this.companyDAO = companyDAO; }
 
+	private FishStockTimePeriodDAO timePeriodDAO;
+	@Autowired
+	public void setTimePeriodDAO(FishStockTimePeriodDAO timePeriodDAO){ this.timePeriodDAO = timePeriodDAO; }
+	
 	public FishStockFacade() { super(); }
 
 	public FishStockUser getUserByUsername(String username) {
@@ -51,5 +56,10 @@ public class FishStockFacade {
 	public void modifyCompanyRating(Rating rating) {
 
 		companyDAO.modifyRating(rating);
+	}
+	
+	public void addCompanyToWatch(FishStockUser user, FishStockCompany company){
+		
+		timePeriodDAO.addCompanyToWatch(user, company);
 	}
 }
