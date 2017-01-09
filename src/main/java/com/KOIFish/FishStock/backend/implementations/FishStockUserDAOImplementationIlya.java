@@ -23,7 +23,7 @@ public class FishStockUserDAOImplementationIlya implements FishStockUserDAO {
 
 	/**
 	 * 
-	 * Get user from db by username. If user with given username does not exist, return null.
+	 * Get user from db by username. If user with given username does not exist, return null..
 	 * @param session session created by facade
 	 * @param username username
 	 * @return User object or null if user with given username does not exist
