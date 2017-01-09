@@ -55,13 +55,11 @@
 			<artifactId>spring-core</artifactId>
 			<version>3.1.4.RELEASE</version>
 		</dependency>
-        <!-- https://mvnrepository.com/artifact/org.springFramework/spring-tx -->
         <dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>3.1.4.RELEASE</version>
 		</dependency>
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
         <dependency>
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
@@ -107,11 +105,11 @@
 			<artifactId>spring-jms</artifactId>
 			<version>3.1.4.RELEASE</version>
 		</dependency>
-		<dependency>
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging</artifactId>
-			<version>1.2</version>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>3.1.4.RELEASE</version>
+        </dependency>
 
 		<!-- jackson -->
 		<dependency>
