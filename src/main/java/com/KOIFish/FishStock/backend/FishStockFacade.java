@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.KOIFish.FishStock.beans.FishStockCompany;
+import com.KOIFish.FishStock.beans.FishStockTimePeriod;
 import com.KOIFish.FishStock.beans.FishStockUser;
 import com.KOIFish.FishStock.beans.Rating;
 
@@ -62,4 +63,13 @@ public class FishStockFacade {
 		
 		timePeriodDAO.addCompanyToWatch(user, company);
 	}
+	
+	public void removeCompanyFromWatch(FishStockUser user, FishStockCompany company){
+		timePeriodDAO.removeCompanyFromWatch(user, company);
+	}
+	
+	public Set<FishStockTimePeriod> getAllWatchList(){
+		return timePeriodDAO.getAllWatchList();
+	}
+
 }

@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Fish_Watchlist")
-public class FishStockTimeperiod {
+public class FishStockTimePeriod {
 	@Id
 	@Column(name="TimePeriodId", nullable=false)
 	private int id;
@@ -31,7 +31,7 @@ public class FishStockTimeperiod {
 	@Column(name="TimeEnd")
 	private Timestamp endDate;
 	
-	public FishStockTimeperiod() { super(); }
+	public FishStockTimePeriod() { super(); }
 	
 	public int getId() { return id; }
 	public void setId(int id) { this.id = id; }
@@ -65,7 +65,7 @@ public class FishStockTimeperiod {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		FishStockTimeperiod other = (FishStockTimeperiod) obj;
+		FishStockTimePeriod other = (FishStockTimePeriod) obj;
 		if (company == null) {
 			if (other.company != null)
 				return false;

@@ -11,7 +11,7 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 import com.KOIFish.FishStock.backend.FishStockTimePeriodDAO;
 import com.KOIFish.FishStock.beans.FishStockCompany;
-import com.KOIFish.FishStock.beans.FishStockTimeperiod;
+import com.KOIFish.FishStock.beans.FishStockTimePeriod;
 import com.KOIFish.FishStock.beans.FishStockUser;
 
 public class FishStockAddCompanytoWatchDAOTest {
@@ -43,10 +43,10 @@ public class FishStockAddCompanytoWatchDAOTest {
 		dao.addCompanyToWatch(user, company);
 		
 		
-		FishStockTimeperiod tp = new FishStockTimeperiod();
+		FishStockTimePeriod tp = new FishStockTimePeriod();
 		tp.setUser(user);
 		tp.setCompany(company);
-		Set<FishStockTimeperiod> set =  dao.getAllWatchList();
+		Set<FishStockTimePeriod> set =  dao.getAllWatchList();
 		assertTrue(set.contains(tp));
 	}
 	

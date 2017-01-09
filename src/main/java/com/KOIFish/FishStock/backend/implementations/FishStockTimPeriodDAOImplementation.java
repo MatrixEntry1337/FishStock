@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.KOIFish.FishStock.backend.FishStockTimePeriodDAO;
 import com.KOIFish.FishStock.beans.FishStockCompany;
-import com.KOIFish.FishStock.beans.FishStockTimeperiod;
+import com.KOIFish.FishStock.beans.FishStockTimePeriod;
 import com.KOIFish.FishStock.beans.FishStockUser;
 
 @Repository(value="timePeriodDAO")
@@ -32,7 +32,7 @@ public class FishStockTimPeriodDAOImplementation implements FishStockTimePeriodD
 	public void addCompanyToWatch(FishStockUser user, FishStockCompany company) {
 		Session session = sessionFactory.getCurrentSession();
 		
-		FishStockTimeperiod timePeriod = new FishStockTimeperiod();
+		FishStockTimePeriod timePeriod = new FishStockTimePeriod();
 		timePeriod.setCompany(company);
 		timePeriod.setUser(user);
 		session.save(timePeriod);
@@ -45,10 +45,10 @@ public class FishStockTimPeriodDAOImplementation implements FishStockTimePeriodD
 	public void removeCompanyFromWatch(FishStockUser user, FishStockCompany company){
 		Session session = sessionFactory.getCurrentSession();
 		
-		Criteria criteria = session.createCriteria(FishStockTimeperiod.class);
+		Criteria criteria = session.createCriteria(FishStockTimePeriod.class);
 		criteria.add(Restrictions.eq("user", user));
 		criteria.add(Restrictions.eq("company", company));
-		FishStockTimeperiod timePeriod = (FishStockTimeperiod) criteria.uniqueResult();
+		FishStockTimePeriod timePeriod = (FishStockTimePeriod) criteria.uniqueResult();
 		
 		session.delete(timePeriod);
 	}
@@ -58,10 +58,10 @@ public class FishStockTimPeriodDAOImplementation implements FishStockTimePeriodD
 	@Transactional(isolation=Isolation.READ_UNCOMMITTED,
 					propagation=Propagation.REQUIRES_NEW,
 					rollbackFor=Exception.class)
-	public Set<FishStockTimeperiod> getAllWatchList(){
+	public Set<FishStockTimePeriod> getAllWatchList(){
 		Session session = sessionFactory.getCurrentSession();
 		
-		Criteria criteria = session.createCriteria(FishStockTimeperiod.class);
+		Criteria criteria = session.createCriteria(FishStockTimePeriod.class);
 		return new HashSet<>(criteria.list());
 	}
 	

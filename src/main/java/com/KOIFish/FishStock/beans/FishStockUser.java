@@ -44,7 +44,7 @@ public class FishStockUser {
 	private String password;
 	
 	@OneToMany(fetch=FetchType.EAGER, mappedBy="user")
-	private Set<FishStockTimeperiod> companiesWatched = new HashSet<>();
+	private Set<FishStockTimePeriod> companiesWatched = new HashSet<>();
 	
 	
 	public FishStockUser() { super(); }
@@ -68,8 +68,8 @@ public class FishStockUser {
 	public String getPassword() { return password; }
 	public void setPassword(String password) { this.password = password; }
 
-	public Set<FishStockTimeperiod> getCompaniesWatched() { return companiesWatched; }
-	public void setCompaniesWatched(Set<FishStockTimeperiod> companiesWatched) { this.companiesWatched = companiesWatched; }
+	public Set<FishStockTimePeriod> getCompaniesWatched() { return companiesWatched; }
+	public void setCompaniesWatched(Set<FishStockTimePeriod> companiesWatched) { this.companiesWatched = companiesWatched; }
 
 	@Override
 	public String toString() {
