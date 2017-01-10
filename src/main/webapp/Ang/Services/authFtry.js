@@ -6,7 +6,7 @@ angular.module('auth')
 .factory('authFtry', function($http, $log){
 	$log.log("Started Auth Factory");
 	
-	auth = {};
+	var auth = {};
 	
 	auth.loggedIn = false;
 	
