@@ -41,7 +41,8 @@ public class LoginController {
 		
 		session.getAttribute("user_obj").getClass();
 		
-		return (FishStockUser)session.getAttribute("user_obj"); 
+		FishStockUser user = (FishStockUser)session.getAttribute("user_obj");
+		return user;
 	}
 	
 	@RequestMapping(value={"/logout.do"}, method={RequestMethod.GET})

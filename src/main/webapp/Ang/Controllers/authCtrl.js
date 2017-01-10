@@ -8,7 +8,7 @@ angular.module('auth')
 		successFunc = function(response){
 			console.log(response.data.result);
 			if (response.data.result == 'success') {
-				$state.go('app.home');
+				$state.go('user_account.home');
 			}else{
 				$scope.message = "Incorrect username and/or password";
 			}

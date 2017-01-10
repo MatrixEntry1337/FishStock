@@ -1,10 +1,10 @@
 angular.module('account').factory('accountFtry', function($http, $log){
-	var account;
+	var account = {};
 	
 	account.data;
 	
 	account.getUserData = function(){
-		$http.get('/getUserData')
+		return $http.get('/FishStock/getuser.do')
 			.then(function(response){
 				$log.log("Get all -- response object: ");
 				$log.log(response.data);

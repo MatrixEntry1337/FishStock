@@ -11,7 +11,11 @@ angular.module('FishStockApp')
 		.state("app",{
 			abstract: true,
 			url: "/app",
-			templateUrl: "Ang/templates/nav.html"})
+			templateUrl: "Ang/templates/nav.html",
+			onEnter: function($state, authFtry){
+                if(authFtry.checkLogin())
+                    $state.go('user_account.home');}
+		})
 		.state("app.login", {
 			url: "/login",
 			templateUrl: "Ang/templates/login.html",
@@ -29,19 +33,21 @@ angular.module('FishStockApp')
 		.state("user_account",{
 			abstract:true,
 			url: "/user_account",
-			templateURL: "Ang/templates/userNav.html",
+			templateUrl: "Ang/templates/accountNav.html",
 			onEnter: function($state, authFtry){
-				if(!authFtry.isLoggedIn())
-					$state.go("app.login");
-			}
-		}).state("user_account.home",{
+				if(!authFtry.checkLogin())
+					$state.go("app.login");},
+			resolve: {
+	            userData: function(accountFtry){
+	            	accountFtry.getUserData();
+	            }
+	        }
+		})
+		.state("user_account.home",{
 			url: "/home",
-			templateUrl: "Ang/templates/userHome.html",
-			controller: "userHomeCtrl"
-		});
-	
+			templateUrl: "Ang/templates/accountHome.html",
+			controller: "accountHomeCtrl"});
 		
-		
-	// use the HTML5 History API
-//    $locationProvider.html5Mode(true);
+	//    use the HTML5 History API
+	//    $locationProvider.html5Mode(true);
 });

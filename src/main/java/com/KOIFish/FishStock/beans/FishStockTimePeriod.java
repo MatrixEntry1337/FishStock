@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="Fish_Watchlist")
 public class FishStockTimePeriod {
@@ -18,10 +20,12 @@ public class FishStockTimePeriod {
 	private int id;
 	
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="UserId", nullable=false)
 	private FishStockUser user;
 	
 	@OneToOne
+	@JsonIgnore
 	@JoinColumn(name="CompanyId", nullable=false)
 	private FishStockCompany company;
 	

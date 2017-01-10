@@ -11,7 +11,7 @@ angular.module('auth')
 	auth.loggedIn = false;
 	
 	auth.checkLogin = function(){
-		return loggedIn();
+		return this.loggedIn;
 	};
 	
 	auth.login = function (loginFormData, successFunc, failureFunc) {
