@@ -17,6 +17,8 @@ angular.module('auth')
 	auth.login = function (loginFormData, successFunc, failureFunc) {
 		$http.post('/FishStock/login.do', loginFormData)
 		.then(function(response){
+			$log.log("Get all -- response object: ");
+			$log.log(response.data);
 			successFunc(response);
 			auth.loggedIn = true;
 		})
