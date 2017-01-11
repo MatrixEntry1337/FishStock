@@ -5,10 +5,13 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.KOIFish.FishStock.beans.FishStockCompany;
+import com.KOIFish.FishStock.beans.FishStockPrediction;
 import com.KOIFish.FishStock.beans.FishStockTransferCompanies;
 import com.KOIFish.FishStock.middletier.FishStockBusinessDelegate;
 
@@ -26,5 +29,14 @@ public class StockController {
 	public FishStockTransferCompanies getAll() throws IOException{
 		FishStockTransferCompanies transferData = delegate.getAllCompanies();
 		return transferData;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value={"/getPrediction.do"}, method={RequestMethod.GET}, produces={"application/json"},
+					consumes={"application/json"})
+	public FishStockPrediction getPrediction(@RequestBody FishStockCompany company ) {
+		FishStockPrediction prediction = delegate.predictStock(company);
+		return prediction;
+	
 	}
 }
