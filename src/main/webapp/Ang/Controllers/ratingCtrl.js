@@ -9,6 +9,5 @@ angular.module('rating').controller(function($scope, ratingFtry, $log){
 
     $scope.version = publicFtry.getVersion();
 
-    //test
     
 });
