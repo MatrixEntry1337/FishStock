@@ -13,7 +13,6 @@ angular.module('auth')
 	auth.checkLogin = function(){
 		return this.loggedIn;
 	};
-	
 	auth.login = function (loginFormData, successFunc, failureFunc) {
 		$http.post('/FishStock/login.do', loginFormData)
 		.then(function(response){
@@ -27,6 +26,5 @@ angular.module('auth')
 		})
 		.finally($log.log("Always runs"));
 	};
-	
 	return auth;
 });

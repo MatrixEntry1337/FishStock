@@ -16,11 +16,20 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * The type Fish stock company dao implementation.
+ */
 @Repository(value="companyDAO")
 public class FishStockCompanyDAOImplementation implements FishStockCompanyDAO {
 	
 	private SessionFactory sessionFactory;
-	@Autowired
+
+    /**
+     * Sets session factory.
+     *
+     * @param sessionFactory the session factory
+     */
+    @Autowired
 	public void setSessionFactory(SessionFactory sessionFactory) { this.sessionFactory = sessionFactory; }
 
 
