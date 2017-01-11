@@ -24,8 +24,7 @@ angular.module('auth')
 		})
 		.catch(function(response){
 			failureFunc(response);
-		})
-		.finally($log.log("Always runs"));
+		});
 	};
 	
 	return auth;
