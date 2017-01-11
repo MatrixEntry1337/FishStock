@@ -4,7 +4,7 @@ angular.module('account').factory('accountFtry', function($http, $log){
 	account.data;
 	
 	account.getUserData = function(){
-		return $http.get('/FishStock/getuser.do')
+		$http.get('/FishStock/getuser.do')
 			.then(function(response){
 				$log.log("Get all -- response object: ");
 				$log.log(response.data);

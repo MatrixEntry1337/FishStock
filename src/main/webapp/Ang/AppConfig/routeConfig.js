@@ -1,6 +1,7 @@
 // config for app
 angular.module('FishStockApp')
-	.config(function($stateProvider, $locationProvider, $urlRouterProvider){
+	.config(function($stateProvider, $locationProvider, $urlRouterProvider
+			){
 		
 	// go to home on startup
 	$urlRouterProvider.otherwise('app/home');
@@ -12,9 +13,11 @@ angular.module('FishStockApp')
 			abstract: true,
 			url: "/app",
 			templateUrl: "Ang/templates/nav.html",
-			onEnter: function($state, authFtry){
-                if(authFtry.checkLogin())
-                    $state.go('user_account.home');}
+//		onEnter: function($state, authFtry){
+//                if(authFtry.checkLogin()){
+//                    $state.go('user_account.home');
+//				}
+//            }
 		})
 		.state("app.login", {
 			url: "/login",
@@ -34,12 +37,13 @@ angular.module('FishStockApp')
 			abstract:true,
 			url: "/user_account",
 			templateUrl: "Ang/templates/accountNav.html",
-			onEnter: function($state, authFtry){
-				if(!authFtry.checkLogin())
-					$state.go("app.login");},
+//			onEnter: function($state, authFtry){
+//				if(!authFtry.checkLogin())
+//					$state.go("app.login");},
 			resolve: {
 	            userData: function(accountFtry){
-	            	accountFtry.getUserData();
+	            	return accountFtry.getUserData();
+	            
 	            }
 	        }
 		})
