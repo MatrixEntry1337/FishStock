@@ -12,7 +12,7 @@ angular.module('FishStockApp')
 		.state("app",{
 			abstract: true,
 			url: "/app",
-			templateUrl: "Ang/templates/nav.html",
+			templateUrl: "Ang/templates/public/nav.html",
 //		onEnter: function($state, authFtry){
 //                if(authFtry.checkLogin()){
 //                    $state.go('user_account.home');
@@ -21,22 +21,22 @@ angular.module('FishStockApp')
 		})
 		.state("app.login", {
 			url: "/login",
-			templateUrl: "Ang/templates/login.html",
+			templateUrl: "Ang/templates/public/login.html",
 			controller: "authCtrl"})
 		.state("app.home", {
 			url: "/home",
-			templateUrl: "Ang/templates/home.html",
+			templateUrl: "Ang/templates/public/home.html",
 			controller: "publicCtrl"})
 		.state("app.allStocks", {
 			url: "/all-stocks",
-			templateUrl: "Ang/templates/stocks.html",
+			templateUrl: "Ang/templates/public/stocks.html",
 			controller: "stocksCtrl"})
 		
 		// user area
 		.state("user_account",{
 			abstract:true,
 			url: "/user_account",
-			templateUrl: "Ang/templates/accountNav.html",
+			templateUrl: "Ang/templates/private/nav.html",
 //			onEnter: function($state, authFtry){
 //				if(!authFtry.checkLogin())
 //					$state.go("app.login");},
@@ -49,7 +49,7 @@ angular.module('FishStockApp')
 		})
 		.state("user_account.home",{
 			url: "/home",
-			templateUrl: "Ang/templates/accountHome.html",
+			templateUrl: "Ang/templates/private/home.html",
 			controller: "accountHomeCtrl"});
 		
 	//    use the HTML5 History API
