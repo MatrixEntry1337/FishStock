@@ -10,4 +10,5 @@ import com.KOIFish.FishStock.beans.FishStockPrediction;
 
 public interface FishStockOperationsService {
 	public FishStockPrediction predictStock(FishStockCompany company);
+	public FishStockPrediction[] predictStocks(FishStockCompany[] companies);
 }

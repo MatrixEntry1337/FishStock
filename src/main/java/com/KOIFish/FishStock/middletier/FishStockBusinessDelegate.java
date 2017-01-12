@@ -70,4 +70,8 @@ public class FishStockBusinessDelegate {
 	public Set<FishStockTimePeriod> getWatchList(FishStockUser user) {
 		return timePeriodService.getWatchList(user);
 	}
+	
+	public FishStockPrediction[] predictStocks(FishStockCompany[] companies){
+		return operationsService.predictStocks(companies);
+	}
 }

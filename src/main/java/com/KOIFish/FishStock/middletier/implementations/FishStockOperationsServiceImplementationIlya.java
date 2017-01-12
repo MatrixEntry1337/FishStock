@@ -24,6 +24,17 @@ import yahoofinance.histquotes.Interval;
 public class FishStockOperationsServiceImplementationIlya implements FishStockOperationsService {
 
 	@Override
+	public FishStockPrediction[] predictStocks(FishStockCompany[] companies) {
+		FishStockPrediction[] results = new FishStockPrediction[companies.length];
+		
+		for (int i = 0; i < companies.length; i++) {
+			results[i] = predictStock(companies[i]);
+		}
+		
+		return results;
+	}
+	
+	@Override
 	public FishStockPrediction predictStock(FishStockCompany company) {
 
 		FishStockPrediction prediction = new FishStockPrediction();
@@ -119,5 +130,7 @@ public class FishStockOperationsServiceImplementationIlya implements FishStockOp
 		
 		return reversedowns - reverseups;
 	}
+
+	
 
 }
