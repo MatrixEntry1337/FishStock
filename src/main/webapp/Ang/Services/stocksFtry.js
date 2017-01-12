@@ -4,7 +4,7 @@ angular.module('stocks')
 	
 	stocks.data = {};
 	
-	stocks.userStocks = [];
+	stocks.watchStocks = [];
 	
 	// get all stocks
 	stocks.getAllData = function(){
@@ -30,16 +30,19 @@ angular.module('stocks')
 	
 	// grab user stocks
 	stocks.getUserStocks = function(){
+		var data = [];
+		
 		$http.get('/FishStock/getWatchList.do')
 			.then(function(response){
 				$log.log("Get User Stocks -- response object: ");
 				$log.log(response.data);
-				angular.copy(response.data, stocks.userStocks);
+				angular.copy(response.data, stocks.watchStocks);
+				angular.copy(response.data, data);
 			})
 			.catch(function(response){
 				$log.log("There was an error, error status: " + response.status);
 			});
-		$log.log(stocks.userStocks);
+		return data;
 	};
 	
 	// add stock

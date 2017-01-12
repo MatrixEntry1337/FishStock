@@ -63,9 +63,18 @@ angular.module('FishStockApp')
 	            }
 			}
 		})
-		.state("user_account.myStocks",{
+		.state("user_account.watchStocks",{
 			url: "/myStocks",
-			templateUrl: "Ang/templates/private/myStocks.html"
+			templateUrl: "Ang/templates/private/watchStocks.html",
+			controller: "accountWatchStocks",
+			resolve: {
+				allData: function(stocksFtry){
+					return stocksFtry.getAllData();
+				},
+				watchStocks: function(stocksFtry){
+					return stocksFtry.getUserStocks();
+				}
+			}
 		});
 		
 	//    use the HTML5 History API

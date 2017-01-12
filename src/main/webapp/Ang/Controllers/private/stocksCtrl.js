@@ -1,9 +1,6 @@
 angular.module('stocks')
 .controller('accountStocksCtrl', function(stocksFtry, $scope, $log, allData){
 	
-	/* refactor ---- resolve so that this is taken care of before the page launches */
-	// get back everything() 
-	// stocksFtry.getAllData();
 	// get back stock that user is watching 
 	 stocksFtry.getUserStocks();
 
@@ -11,7 +8,7 @@ angular.module('stocks')
 	$scope.data = allData;
 
 	// watched stocks
-	$scope.userStocks = stocksFtry.userStocks;
+	$scope.watchStocks = stocksFtry.watchStocks;
 	
 	// currently selected stock
 	$scope.selectStock = function(stock){
@@ -43,7 +40,7 @@ angular.module('stocks')
 
 	$scope.alreadyAdded = function(stock){
 		if(stock){
-			var check = this.userStocks.find(function(element){
+			var check = this.watchStocks.find(function(element){
 				return element.company.symbol == stock.symbol;
 			});
 			return check;
