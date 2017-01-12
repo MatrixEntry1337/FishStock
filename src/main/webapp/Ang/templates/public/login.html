@@ -1,16 +1,24 @@
-<div class="container">
-	<p ng-show="message" id="errorMessage">{{ message }}</p>
-	<form ng-submit="login()" name="loginForm">
-		<div class="row">
-			<div class="col-md-5">
-				<input type="text" name="username" placeholder="username" ng-model="loginFormData.username">
-			</div>
-			<div class="col-md-5">
-				<input type="password" name="password" placeholder="password" ng-model="loginFormData.password">
-			</div>
-			<div class="col-md-2">
-				<input type="submit" value="Login" id="submitButton">
-			</div>
+<div class="container content">
+	<div class="row">
+		<div class="col-md-4 col-sm-6 col-xs-10 col-xs-offset-1 col-sm-offset-3 col-md-offset-4">
+			<form ng-submit="login()" name="loginForm">
+				<h2 class="form-signin-heading">Login</h2>
+
+				<label for="inputUsername" class="sr-only">Username</label> </span> <input
+					type="text" class="form-control form-input" name="username"
+					placeholder="username" ng-model="loginFormData.username" required
+					autofocus> <label for="inputPassword" class="sr-only">Password</label>
+				<input type="password" name="password"
+					class="form-control form-input" placeholder="password"
+					ng-model="loginFormData.password" required>
+
+				<div class="form-button">
+					<button class="btn btn-md btn-primary btn-lf pull-right"
+						type="submit" value="Login" id="submitButton">Sign in</button>
+				</div>
+				<p class="text-danger" ng-show="message" id="errorMessage">{{
+					message }}</p>
+			</form>
 		</div>
-	</form>
+	</div>
 </div>

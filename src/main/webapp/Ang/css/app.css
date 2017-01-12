@@ -1,0 +1,38 @@
+.selectItem{
+	cursor: pointer;
+}
+
+.content {
+	padding: 0em 2em 0 2em;
+}
+
+/************** Sign In **************/
+.form-signin {
+	padding: 3em;
+	background: #fff;
+	border: solid .1em #e0ebeb;
+	box-shadow: 0 0 .3em #e0ebeb;
+}
+
+.form-signin-heading {
+	color: #595959;
+	text-align: center;
+	padding-bottom: 1.5rem;
+	margin-top: .2em;
+	margin-bottom: 1em;
+	border-bottom: solid .05em #eee;
+}
+
+.form-input {
+	margin-bottom: 1rem;
+	border-radius: 0em;
+}
+
+.form-button {
+	margin-top: 1em;
+	margin-bottom: 3em;
+}
+
+.btn-lf {
+	border-radius: 0em;
+}
