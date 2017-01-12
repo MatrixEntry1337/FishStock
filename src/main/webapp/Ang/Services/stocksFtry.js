@@ -35,7 +35,6 @@ angular.module('stocks')
 				$log.log("Get User Stocks -- response object: ");
 				$log.log(response.data);
 				angular.copy(response.data, stocks.userStocks);
-				stocks.getStocksPredictions(stocks.userStocks); //added by Ilya
 			})
 			.catch(function(response){
 				$log.log("There was an error, error status: " + response.status);
