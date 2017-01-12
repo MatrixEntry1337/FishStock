@@ -30,7 +30,7 @@ angular.module('FishStockApp')
 		.state("app.allStocks", {
 			url: "/all-stocks",
 			templateUrl: "Ang/templates/public/stocks.html",
-			controller: "stocksCtrl"})
+			controller: "pubStocksCtrl"})
 		
 		// user area
 		.state("user_account",{

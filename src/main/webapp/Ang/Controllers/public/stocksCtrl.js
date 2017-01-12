@@ -1,5 +1,5 @@
 angular.module('stocks')
-.controller('stocksCtrl', function(stocksFtry, $scope, $log){
+.controller('pubStocksCtrl', function(stocksFtry, $scope, $log){
 	
 	var monthNames = ["January", "February", "March", "April", "May", "June",
 		  "July", "August", "September", "October", "November", "December"
