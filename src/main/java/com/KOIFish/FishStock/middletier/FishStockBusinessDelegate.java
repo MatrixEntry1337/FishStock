@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.KOIFish.FishStock.beans.FishStockCompany;
+import com.KOIFish.FishStock.beans.FishStockPrediction;
 import com.KOIFish.FishStock.beans.FishStockTimePeriod;
 import com.KOIFish.FishStock.beans.FishStockTransferCompanies;
 import com.KOIFish.FishStock.beans.FishStockUser;
@@ -34,6 +35,10 @@ public class FishStockBusinessDelegate {
 	@Autowired
 	public void setTimePeriodService(FishStockTimePeriodService timePeriodService){ this.timePeriodService = timePeriodService; }
 	
+	private FishStockOperationsService operationsService;
+	@Autowired
+	public void setOperationsService(FishStockOperationsService operationsService) { this.operationsService = operationsService; }
+
 	public FishStockUser authenticateUser(String username, String password) {
 		return userService.authenticateUser(username, password);
 	}
@@ -56,5 +61,9 @@ public class FishStockBusinessDelegate {
     
     public Set<FishStockTimePeriod> getAllWatchList(){
     	return timePeriodService.getAllWatchList();
+    }
+    
+    public FishStockPrediction predictStock(FishStockCompany company) {
+    	return operationsService.predictStock(company);
     }
 }
