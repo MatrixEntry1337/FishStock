@@ -4,7 +4,7 @@ angular.module('stocks')
 	
 	stocks.data = {};
 	
-	stocks.userStocks = {};
+	stocks.userStocks = [];
 	
 	// get all stocks
 	stocks.getAllData = function(){
@@ -39,14 +39,14 @@ angular.module('stocks')
 			.catch(function(response){
 				$log.log("There was an error, error status: " + response.status);
 			});
+		$log.log(stocks.userStocks);
 	};
 	
 	// add stock
-	stocks.addStock = function(company){
-		$http.get('/FishStock/addToWatch.do', company)
+	stocks.addStock = function(company, success){
+		$http.post('/FishStock/addToWatch.do', company)
 			.then(function(response){
-				$log.log("Add Stock -- response object: ");
-				$log.log(response.data);
+				success();
 			})
 			.catch(function(response){
 				$log.log("There was an error, error status: " + response.status);

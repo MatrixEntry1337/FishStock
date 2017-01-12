@@ -1,4 +1,24 @@
 angular.module('stocks')
+.controller('accountStocksCtrl', function(stocksFtry, $scope, $log, allData){
+	
+	/* refactor ---- resolve so that this is taken care of before the page launches */
+	// get back everything() 
+	// stocksFtry.getAllData();
+	// get back stock that user is watching 
+	 stocksFtry.getUserStocks();
+
+	// get the data containing all companies and their stock data from factory
+	$scope.data = allData;
+
+	// watched stocks
+	$scope.userStocks = stocksFtry.userStocks;
+	
+	// currently selected stock
+	$scope.selectStock = function(stock){
+		$scope.selectedStock = stock;
+		setQuote(stock);
+		setHistory(stock);
+	};
     .controller('accountStocksCtrl', function (stocksFtry, $scope, $log, allData) {
 
         /* refactor ---- resolve so that this is taken care of before the page launches */
@@ -74,6 +94,65 @@ angular.module('stocks')
             $scope.historyColors = ['#67bf7e', '#00ADF9',
                 '#803690', '#e02626'];
         }
+	/************************************* User Add and Remove ******************************/
+	$scope.addStock = function(stock){
+//		$log.info("Adding Stock: ");
+//		$log.log(stock);
+		var company = this.data.companies.find(function(element){
+			return element.symbol == stock.symbol;
+		});
+
+		stocksFtry.addStock(company, function(){$scope.message = "Stock added to list";});
+
+	};
+
+	$scope.alreadyAdded = function(stock){
+		if(stock){
+			var check = this.userStocks.find(function(element){
+				return element.company.symbol == stock.symbol;
+			});
+			return check;
+		}
+		else return null;
+	}
+
+
+	/************************************* Chart Creation ************************************/
+	function setQuote(stock){
+		$scope.quoteLabels = ["Open", "PreviousClose", "Day High", "Day Low", "Year High", "Year Low"];
+		$scope.quoteData = genQuoteData($scope.selectedStock.quote);
+		$scope.quoteOptions = {
+				elements:{
+					line:{ borderColor: '#c95693', borderWidth: 2, fill: false}
+				}
+		}
+	};
+
+	function setHistory(stock){
+		$scope.historyLabels = genHistoryMonths($scope.selectedStock.history);
+		$scope.historyData = genHistoryData($scope.selectedStock.history);
+		$scope.historySeries = ['Open', 'Close', 'High', 'Low'];
+		$scope.historyOnClick = function (points, evt) {
+			console.log(points, evt);
+		};
+		$scope.historyDatasetOverride = [{ yAxisID: 'y-axis-1' }];
+		$scope.historyOptions = {
+			scales: {
+				yAxes: [
+					{
+			          id: 'y-axis-1',
+			          type: 'linear',
+			          display: true,
+			          position: 'left'
+			        }
+		        ]
+			}
+		};
+
+		// set chart colors
+		$scope.historyColors = [ '#67bf7e', '#00ADF9',
+			'#803690', '#e02626'];
+	};
 
         function genQuoteData(quote) {
             var gen = [];
