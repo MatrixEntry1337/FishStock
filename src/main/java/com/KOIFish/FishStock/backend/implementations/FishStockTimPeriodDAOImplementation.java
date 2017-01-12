@@ -59,5 +59,17 @@ public class FishStockTimPeriodDAOImplementation implements FishStockTimePeriodD
 		Criteria criteria = session.createCriteria(FishStockTimePeriod.class);
 		return new HashSet<>(criteria.list());
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional(isolation=Isolation.READ_COMMITTED,
+					propagation=Propagation.REQUIRES_NEW,
+					rollbackFor=Exception.class)
+	public Set<FishStockTimePeriod> getWatchList(FishStockUser user) {
+		Session session = sessionFactory.getCurrentSession();
+		Criteria criteria = session.createCriteria(FishStockTimePeriod.class);
+		criteria.add(Restrictions.eq("user", user));
+		return new HashSet<>(criteria.list());
+	}
 	
 }

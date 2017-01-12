@@ -66,4 +66,8 @@ public class FishStockBusinessDelegate {
     public FishStockPrediction predictStock(FishStockCompany company) {
     	return operationsService.predictStock(company);
     }
+
+	public Set<FishStockTimePeriod> getWatchList(FishStockUser user) {
+		return timePeriodService.getWatchList(user);
+	}
 }

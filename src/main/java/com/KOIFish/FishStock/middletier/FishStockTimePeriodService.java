@@ -13,5 +13,7 @@ public interface FishStockTimePeriodService {
 	public void removeCompanyFromWatch(FishStockUser user, FishStockCompany company);
 	
 	public Set<FishStockTimePeriod> getAllWatchList();
+	
+	public Set<FishStockTimePeriod> getWatchList(FishStockUser user);
 
 }
