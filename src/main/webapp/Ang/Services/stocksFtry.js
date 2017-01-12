@@ -66,6 +66,27 @@ angular.module('stocks')
 			});
 	};
 	
+	//get a stock prediction
+	stocks.getStockPrediction = function(company){
+		$http.get('/FishStock/getPrediction.do', company)
+			.then(function(response) {
+				stocks.predictions.push(response.data);
+			})
+			.catch(function(response){
+				$log.log("Error: " + response.status)
+			});
+	};
+	
+	//get predictions for many stocks
+	stocks.getStockPredictions = function(companies){
+		$http.get('/FishStock/getPredictions.do', companies)
+			.then(function(response) {
+				angular.copy(response.data, stocks.predictions);
+			})
+			.catch(function(response){
+				$log.log("Error: " + response.status)
+			});
+	};
 	
 	return stocks;
 });
