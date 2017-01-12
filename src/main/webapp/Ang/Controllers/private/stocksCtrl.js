@@ -5,10 +5,13 @@ angular.module('stocks')
 	// get back everything() 
 	// stocksFtry.getAllData();
 	// get back stock that user is watching 
-	stocksFtry.getUserStocks();
+	 stocksFtry.getUserStocks();
 	
 	// get the data containing all companies and their stock data from factory
 	$scope.data = allData;
+	
+	// watched stocks
+	$scope.userStocks = stocksFtry.userStocks;
 	
 	// currently selected stock
 	$scope.selectStock = function(stock){
@@ -19,15 +22,25 @@ angular.module('stocks')
 
 	/************************************* User Add and Remove ******************************/
 	$scope.addStock = function(stock){
-		$log.info("Adding Stock: ");
-		$log.log(stock);
+//		$log.info("Adding Stock: ");
+//		$log.log(stock);
+		var company = this.data.companies.find(function(element){
+			return element.symbol == stock.symbol;
+		});
+		
+		stocksFtry.addStock(company, function(){$scope.message = "Stock added to list";});
+		
 	};
 	
-	$scope.alreadyAdded = function(stock){
-		$log.info("Checking Stock: ");
-		$log.log(stock);
+	$scope.alreadyAdded = function(stock){	
+		if(stock){
+			var check = this.userStocks.find(function(element){
+				return element.company.symbol == stock.symbol;
+			});
+			return check;
+		}
+		else return null;
 	}
-	
 	
 	
 	/************************************* Chart Creation ************************************/

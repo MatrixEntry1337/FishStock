@@ -25,7 +25,6 @@ public class FishStockTimePeriod {
 	private FishStockUser user;
 	
 	@OneToOne
-	@JsonIgnore
 	@JoinColumn(name="CompanyId", nullable=false)
 	private FishStockCompany company;
 	
