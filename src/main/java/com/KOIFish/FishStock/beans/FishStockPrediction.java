@@ -9,23 +9,14 @@ package com.KOIFish.FishStock.beans;
  *
  */
 public class FishStockPrediction {
-	private FishStockCompany company;
+	private String symbol;
 	private int withinDayFactor, withinWeekFactor, withinMonthFactor, withinYearFactor;
 	
 	public FishStockPrediction() { super(); }
-	
-	public FishStockPrediction(FishStockCompany company, int withinDayFactor, int withinWeekFactor,
-			int withinYearFactor) {
-		super();
-		this.company = company;
-		this.withinDayFactor = withinDayFactor;
-		this.withinWeekFactor = withinWeekFactor;
-		this.withinYearFactor = withinYearFactor;
-	}
-	
-	public FishStockCompany getCompany() { return company; }
-	public void setCompany(FishStockCompany company) { this.company = company; }
-	
+
+	public String getSymbol() { return symbol; }
+	public void setSymbol(String symbol) { this.symbol = symbol; }
+
 	public int getWithinDayFactor() { return withinDayFactor; }
 	public void setWithinDayFactor(int withinDayFactor) { this.withinDayFactor = withinDayFactor; }
 	

@@ -36,8 +36,9 @@ angular.module('stocks')
 			.then(function(response){
 				$log.log("Get User Stocks -- response object: ");
 				$log.log(response.data);
-				angular.copy(response.data, stocks.watchStocks);
 				angular.copy(response.data, data);
+				angular.copy(response.data, stocks.userStocks);
+				stocks.getStocksPredictions(stocks.userStocks); //added by Ilya
 			})
 			.catch(function(response){
 				$log.log("There was an error, error status: " + response.status);
@@ -69,6 +70,27 @@ angular.module('stocks')
 			});
 	};
 	
+	//get a stock prediction
+	stocks.getStockPrediction = function(company){
+		$http.get('/FishStock/getPrediction.do', company)
+			.then(function(response) {
+				stocks.predictions.push(response.data);
+			})
+			.catch(function(response){
+				$log.log("Error: " + response.status)
+			});
+	};
+	
+	//get predictions for many stocks
+	stocks.getStocksPredictions = function(companies){
+		$http.get('/FishStock/getPredictions.do', companies)
+			.then(function(response) {
+				angular.copy(response.data, stocks.predictions);
+			})
+			.catch(function(response){
+				$log.log("Error: " + response.status)
+			});
+	};
 	
 	return stocks;
 });
