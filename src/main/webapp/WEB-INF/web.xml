@@ -25,13 +25,4 @@
 		<servlet-name>springDispatcherServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-
-	<filter>
-		<filter-name>securityfilter</filter-name>
-		<filter-class>com.KOIFish.FishStock.frontend.SecurityFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>securityfilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
 </web-app>
