@@ -1,18 +1,21 @@
 angular.module('stocks')
-.controller('pubStocksCtrl', function(stocksFtry, $scope, $log){
+.controller('pubStocksCtrl', function(stocksFtry, $scope, $log, allData){
 	
-	var monthNames = ["January", "February", "March", "April", "May", "June",
-		  "July", "August", "September", "October", "November", "December"
-		];
+	/* refactor ---- resolve so that this is taken care of before the page launches */
+	// get back everything() 
+	// stocksFtry.getAllData();
 	
-	$scope.getAll = stocksFtry.getAll();
-	$scope.data = stocksFtry.data;
+	// get the data containing all companies and their stock data from factory
+	$scope.data = allData;
+	
+	// currently selected stock
 	$scope.selectStock = function(stock){
 		$scope.selectedStock = stock;
 		setQuote(stock);
 		setHistory(stock);
 	};
 
+	/************************************* Chart Creation ************************************/
 	function setQuote(stock){
 		$scope.quoteLabels = ["Open", "PreviousClose", "Day High", "Day Low", "Year High", "Year Low"];
 		$scope.quoteData = genQuoteData($scope.selectedStock.quote);
@@ -21,7 +24,7 @@ angular.module('stocks')
 					line:{ borderColor: '#c95693', borderWidth: 2, fill: false}
 				}
 		}
-	}
+	};
 	
 	function setHistory(stock){
 		$scope.historyLabels = genHistoryMonths($scope.selectedStock.history);
@@ -60,7 +63,7 @@ angular.module('stocks')
 		gen.push(quote.yearLow);
 	
 		return gen;
-	}
+	};
 	
 	function genHistoryMonths(history){
 		// get the year
@@ -106,5 +109,11 @@ angular.module('stocks')
 		gen.push(high);
 		gen.push(low);
 		return gen;
-	}
+	};
+	
+	var monthNames = ["January", "February", "March", "April", "May", "June",
+		  "July", "August", "September", "October", "November", "December"
+		];
+	
+	
 });
