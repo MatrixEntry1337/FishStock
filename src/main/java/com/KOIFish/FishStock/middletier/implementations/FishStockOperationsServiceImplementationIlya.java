@@ -38,7 +38,7 @@ public class FishStockOperationsServiceImplementationIlya implements FishStockOp
 	public FishStockPrediction predictStock(FishStockCompany company) {
 
 		FishStockPrediction prediction = new FishStockPrediction();
-		prediction.setCompany(company);
+		prediction.setSymbol(company.getSymbol());
 
 		Calendar from, to; // for periods
 		to = Calendar.getInstance();

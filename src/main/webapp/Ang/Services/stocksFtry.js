@@ -35,6 +35,7 @@ angular.module('stocks')
 				$log.log("Get User Stocks -- response object: ");
 				$log.log(response.data);
 				angular.copy(response.data, stocks.userStocks);
+				stocks.getStocksPredictions(stocks.userStocks); //added by Ilya
 			})
 			.catch(function(response){
 				$log.log("There was an error, error status: " + response.status);
@@ -78,7 +79,7 @@ angular.module('stocks')
 	};
 	
 	//get predictions for many stocks
-	stocks.getStockPredictions = function(companies){
+	stocks.getStocksPredictions = function(companies){
 		$http.get('/FishStock/getPredictions.do', companies)
 			.then(function(response) {
 				angular.copy(response.data, stocks.predictions);
