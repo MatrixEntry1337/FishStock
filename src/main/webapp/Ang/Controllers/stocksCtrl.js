@@ -7,8 +7,11 @@ angular.module('stocks')
 	
 	$scope.getAll = stocksFtry.getAll();
 	$scope.data = stocksFtry.data;
-	$scope.selectStock = function(stock){
+	$scope.selectStock = function(stock, index){
 		$scope.selectedStock = stock;
+		$scope.selectedStock.index = $scope.companies.find(function(){
+            $scope.selectedStock.sym
+        });
 		setQuote(stock);
 		setHistory(stock);
 	};

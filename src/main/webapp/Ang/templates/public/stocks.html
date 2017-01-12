@@ -1,35 +1,54 @@
 <div class="container">
-
-	<div class="row">
-		<div class="col-md-4">
-			<div class="list-group">
-			  <a class="list-group-item" ng-repeat="stock in data.stocks" ng-click="selectStock(stock)">
-			    {{ stock.name }}
-			  </a>
-			</div>	
-		</div>
-		<div class="col-md-8" ng-show="selectedStock">
-			<div class="panel panel">
-				<div class="panel-body">
-					<p>Stock Exchange: {{ selectedStock.stockExchange }}</p>
-					<div class="row">
-						<div class="col-md-4">
-							<canvas id="radar" class="chart chart-radar"
-						  		chart-data="quoteData" chart-labels="quoteLabels" chart-options="quoteOptions"
-						  		chart-colors="quoteColors">
-							</canvas>
-						</div>
-						<div class="col-md-8">
-							<canvas id="line" class="chart chart-line" chart-data="historyData"
-								chart-labels="historyLabels" chart-series="historySeries" 
-								chart-options="historyOptions" chart-dataset-override="historyDatasetOverride"
-								chart-click="historyOnClick" chart-colors="historyColors">
-							</canvas>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="list-group">
+                <a class="list-group-item" ng-repeat="stock in data.stocks" ng-click="selectStock(stock)">
+                    {{ stock.name }}
+                </a>
+            </div>
+        </div>
+        <div class="col-md-8" ng-show="selectedStock">
+            <div class="panel panel">
+                <div class="panel-body">
+                    <p>Stock Exchange: {{ selectedStock.stockExchange }}</p>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <canvas id="radar" class="chart chart-radar"
+                                    chart-data="quoteData" chart-labels="quoteLabels" chart-options="quoteOptions"
+                                    chart-colors="quoteColors">
+                            </canvas>
+                        </div>
+                        <div class="col-md-8">
+                            <canvas id="line" class="chart chart-line" chart-data="historyData"
+                                    chart-labels="historyLabels" chart-series="historySeries"
+                                    chart-options="historyOptions" chart-dataset-override="historyDatasetOverride"
+                                    chart-click="historyOnClick" chart-colors="historyColors">
+                            </canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <form>
+        <div class="radio">
+            <label><input type="radio" name="rating">1 star</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="rating">2 stars</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="rating">3 stars</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="rating">4 stars</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="rating">5 stars</label>
+        </div>
+        <input type="hidden" name="company" value="{{selectedStock.index}}">
+    </form>
 </div>
 
