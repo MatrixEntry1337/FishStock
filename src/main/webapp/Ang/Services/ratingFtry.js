@@ -2,18 +2,11 @@
  * 
  */
 angular.module('rating')
-.factory('ratingFtry', function ($http, $log) {
+.factory('ratingFtry', function (input, $http, $log) {
     $log.log("Started rating Factory");
-    var req = {
+    $http({
         method: 'POST',
         url: '/addRating.do',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        data: {
-            rating: 'rating',
-            companyId:"companyId"
-        }
-    };
-    $http(req);
+        data: input
+    });
 });

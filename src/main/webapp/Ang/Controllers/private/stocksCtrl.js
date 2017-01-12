@@ -1,6 +1,5 @@
 angular.module('stocks')
-.controller('stocksCtrl', function(stocksFtry, $scope, $log){
-	
+.controller('accountStocksCtrl', function(stocksFtry, $scope, $log){
 	var monthNames = ["January", "February", "March", "April", "May", "June",
 		  "July", "August", "September", "October", "November", "December"
 		];
@@ -9,17 +8,23 @@ angular.module('stocks')
 	$scope.data = stocksFtry.data;
 	$scope.selectStock = function(stock){
 		$scope.selectedStock = stock;
-		setInfo(stock);
+		setQuote(stock);
 		setHistory(stock);
 	};
 
-	function setInfo(stock){
-		
+	function setQuote(stock){
+		$scope.quoteLabels = ["Open", "PreviousClose", "Day High", "Day Low", "Year High", "Year Low"];
+		$scope.quoteData = genQuoteData($scope.selectedStock.quote);
+		$scope.quoteOptions = {
+				elements:{
+					line:{ borderColor: '#c95693', borderWidth: 2, fill: false}
+				}
+		}
 	}
 	
 	function setHistory(stock){
-		$scope.historyLabels = genMonths($scope.selectedStock.history);
-		$scope.historyData = genData($scope.selectedStock.history);
+		$scope.historyLabels = genHistoryMonths($scope.selectedStock.history);
+		$scope.historyData = genHistoryData($scope.selectedStock.history);
 		$scope.historySeries = ['Open', 'Close', 'High', 'Low'];
 		$scope.historyOnClick = function (points, evt) {
 			console.log(points, evt);
@@ -42,8 +47,21 @@ angular.module('stocks')
 		$scope.historyColors = [ '#67bf7e', '#00ADF9', 
 			'#803690', '#e02626'];
 	};
+
+	function genQuoteData(quote){
+		var gen = [];
+		
+		gen.push(quote.open);
+		gen.push(quote.previousClose);
+		gen.push(quote.dayHigh);
+		gen.push(quote.dayLow);
+		gen.push(quote.yearHigh);
+		gen.push(quote.yearLow);
 	
-	function genMonths(history){
+		return gen;
+	}
+	
+	function genHistoryMonths(history){
 		// get the year
 	    var currentYear = new Date().getFullYear();
 	    
@@ -66,12 +84,12 @@ angular.module('stocks')
 		return gen;
 	};
 	
-	function genData(history){
-		gen = [];
-		open = [];
-		close = [];
-		high = [];
-		low = [];
+	function genHistoryData(history){
+		var gen = [];
+		var open = [];
+		var close = [];
+		var high = [];
+		var low = [];
 		
 		// get data
 		history.forEach(function(each){
@@ -88,4 +106,4 @@ angular.module('stocks')
 		gen.push(low);
 		return gen;
 	}
-});
+})
