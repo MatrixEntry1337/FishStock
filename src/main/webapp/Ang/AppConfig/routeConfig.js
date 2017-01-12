@@ -42,21 +42,17 @@ angular.module('FishStockApp')
 		.state("user_account",{
 			abstract:true,
 			url: "/user_account",
-			templateUrl: "Ang/templates/private/nav.html",
-//			onEnter: function($state, authFtry){
-//				if(!authFtry.checkLogin())
-//					$state.go("app.login");},
-			resolve: {
-	            userData: function(accountFtry){
-	            	return accountFtry.getUserData();
-	            
-	            }
-	        }
-		})
+			templateUrl: "Ang/templates/private/nav.html"})
 		.state("user_account.home",{
 			url: "/home",
 			templateUrl: "Ang/templates/private/home.html",
-			controller: "accountHomeCtrl"})
+			controller: "accountHomeCtrl",
+			resolve: {
+	            userData: function(accountFtry){
+	            	return accountFtry.getUserData();        
+	            }
+	        }
+		})
 		.state("user_account.stocks",{
 			url: "/stocks",
 			templateUrl: "Ang/templates/private/stocks.html",
