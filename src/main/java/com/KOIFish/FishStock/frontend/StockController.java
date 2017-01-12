@@ -39,4 +39,13 @@ public class StockController {
 		return prediction;
 	
 	}
+	
+	@ResponseBody
+	@RequestMapping(value={"/getPredictions.do"}, method={RequestMethod.GET}, produces={"application/json"},
+					consumes={"application/json"})
+	public FishStockPrediction[] getPredictions(@RequestBody FishStockCompany[] companies ) {
+		FishStockPrediction[] predictions = delegate.predictStocks(companies);
+		return predictions;
+	
+	}
 }

@@ -12,6 +12,8 @@
 			<div class="panel panel-primary">
 				<div class="panel-heading">
 					Stock: {{ selectedStock.name }}
+					<span class="glyphicon glyphicon-plus-sign pull-right" role=button aria-hidden="true" 
+					ng-click="addStock(selectedStock)" ng-hide="alreadyAdded(selectedStock)"></span>
 				</div>
 				<div class="panel-body">
 					

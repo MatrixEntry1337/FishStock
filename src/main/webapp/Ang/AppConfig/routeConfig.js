@@ -30,7 +30,13 @@ angular.module('FishStockApp')
 		.state("app.allStocks", {
 			url: "/all-stocks",
 			templateUrl: "Ang/templates/public/stocks.html",
-			controller: "pubStocksCtrl"})
+			controller: "pubStocksCtrl",
+			resolve: {
+	            allData: function(stocksFtry){
+	            	return stocksFtry.getAllData();
+	            }
+			}
+		})
 		
 		// user area
 		.state("user_account",{
@@ -54,7 +60,13 @@ angular.module('FishStockApp')
 		.state("user_account.stocks",{
 			url: "/stocks",
 			templateUrl: "Ang/templates/private/stocks.html",
-			controller: "accountStocksCtrl"})
+			controller: "accountStocksCtrl",
+			resolve: {
+	            allData: function(stocksFtry){
+	            	return stocksFtry.getAllData();
+	            }
+			}
+		})
 		.state("user_account.myStocks",{
 			url: "/myStocks",
 			templateUrl: "Ang/templates/private/myStocks.html"
