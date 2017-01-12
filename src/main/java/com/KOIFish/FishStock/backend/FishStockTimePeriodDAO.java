@@ -34,4 +34,11 @@ public interface FishStockTimePeriodDAO {
 	 */
 	Set<FishStockTimePeriod> getAllWatchList();
 
+	/**
+	 * 
+	 * @param user
+	 * @return
+	 */
+	Set<FishStockTimePeriod> getWatchList(FishStockUser user);
+	
 }

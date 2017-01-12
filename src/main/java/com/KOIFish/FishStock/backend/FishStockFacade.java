@@ -72,4 +72,7 @@ public class FishStockFacade {
 		return timePeriodDAO.getAllWatchList();
 	}
 
+	public Set<FishStockTimePeriod> getWatchList(FishStockUser user){
+		return timePeriodDAO.getWatchList(user);
+	}
 }

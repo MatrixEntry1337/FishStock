@@ -32,4 +32,9 @@ public class FishStockTimePeriodServiceImplementation implements FishStockTimePe
 	public Set<FishStockTimePeriod> getAllWatchList() {
 		return facade.getAllWatchList();
 	}
+
+	@Override
+	public Set<FishStockTimePeriod> getWatchList(FishStockUser user) {
+		return facade.getWatchList(user);
+	}
 }
