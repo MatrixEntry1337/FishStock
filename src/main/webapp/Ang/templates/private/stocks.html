@@ -1,0 +1,41 @@
+<div class="container">
+
+	<div class="row">
+		<div class="col-md-4 col-sm-6">
+			<div class="list-group">
+			  <a class="list-group-item" role="button" ng-repeat="stock in data.stocks" ng-click="selectStock(stock)">
+			    {{ stock.name }}
+			  </a>
+			</div>	
+		</div>
+		<div class="col-md-8 col-sm-6" ng-show="selectedStock">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					Stock: {{ selectedStock.name }}
+				</div>
+				<div class="panel-body">
+					
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 col-sm-12">
+							<canvas id="radar" class="chart chart-radar"
+						  		chart-data="quoteData" chart-labels="quoteLabels" chart-options="quoteOptions"
+						  		chart-colors="quoteColors">
+							</canvas>
+						</div>
+						
+					</div>
+					<div class="row">
+						<div class="col-md-10 col-md-offset-1 col-sm-12">
+							<canvas id="line" class="chart chart-line" chart-data="historyData"
+								chart-labels="historyLabels" chart-series="historySeries" 
+								chart-options="historyOptions" chart-dataset-override="historyDatasetOverride"
+								chart-click="historyOnClick" chart-colors="historyColors">
+							</canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
