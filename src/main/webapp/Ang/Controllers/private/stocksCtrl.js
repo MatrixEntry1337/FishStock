@@ -1,17 +1,13 @@
 angular.module('stocks')
-.controller('stocksCtrl', function(stocksFtry, $scope, $log){
-	
+.controller('accountStocksCtrl', function(stocksFtry, $scope, $log){
 	var monthNames = ["January", "February", "March", "April", "May", "June",
 		  "July", "August", "September", "October", "November", "December"
 		];
 	
 	$scope.getAll = stocksFtry.getAll();
 	$scope.data = stocksFtry.data;
-	$scope.selectStock = function(stock, index){
+	$scope.selectStock = function(stock){
 		$scope.selectedStock = stock;
-		$scope.selectedStock.index = $scope.companies.find(function(){
-            $scope.selectedStock.sym
-        });
 		setQuote(stock);
 		setHistory(stock);
 	};
@@ -110,4 +106,4 @@ angular.module('stocks')
 		gen.push(low);
 		return gen;
 	}
-});
+})

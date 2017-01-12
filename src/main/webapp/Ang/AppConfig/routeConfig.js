@@ -30,7 +30,7 @@ angular.module('FishStockApp')
 		.state("app.allStocks", {
 			url: "/all-stocks",
 			templateUrl: "Ang/templates/public/stocks.html",
-			controller: "stocksCtrl"})
+			controller: "pubStocksCtrl"})
 		
 		// user area
 		.state("user_account",{
@@ -50,7 +50,15 @@ angular.module('FishStockApp')
 		.state("user_account.home",{
 			url: "/home",
 			templateUrl: "Ang/templates/private/home.html",
-			controller: "accountHomeCtrl"});
+			controller: "accountHomeCtrl"})
+		.state("user_account.stocks",{
+			url: "/stocks",
+			templateUrl: "Ang/templates/private/stocks.html",
+			controller: "accountStocksCtrl"})
+		.state("user_account.myStocks",{
+			url: "/myStocks",
+			templateUrl: "Ang/templates/private/myStocks.html"
+		});
 		
 	//    use the HTML5 History API
 	//    $locationProvider.html5Mode(true);
