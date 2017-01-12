@@ -1,0 +1,28 @@
+<div container>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					Test
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-6 col-sm-12">
+							<canvas id="radar" class="chart chart-radar"
+						  		chart-data="quoteData" chart-labels="quoteLabels" chart-options="quoteOptions"
+						  		chart-colors="quoteColors">
+							</canvas>
+						</div>
+						<div class="col-md-6 col-sm-12">
+							<canvas id="line" class="chart chart-line" chart-data="historyData"
+								chart-labels="historyLabels" chart-series="historySeries" 
+								chart-options="historyOptions" chart-dataset-override="historyDatasetOverride"
+								chart-click="historyOnClick" chart-colors="historyColors">
+							</canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

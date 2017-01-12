@@ -65,7 +65,8 @@ angular.module('FishStockApp')
 		})
 		.state("user_account.myStocks",{
 			url: "/myStocks",
-			templateUrl: "Ang/templates/private/myStocks.html"
+			templateUrl: "Ang/templates/private/myStocks.html",
+			controller: "accountWatchStocks"
 		});
 		
 	//    use the HTML5 History API
