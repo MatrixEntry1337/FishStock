@@ -6,6 +6,8 @@ angular.module('stocks')
 	
 	stocks.watchStocks = [];
 	
+	stocks.predictions = [];
+	
 	// get all stocks
 	stocks.getAllData = function(){
 		
@@ -37,8 +39,8 @@ angular.module('stocks')
 				$log.log("Get User Stocks -- response object: ");
 				$log.log(response.data);
 				angular.copy(response.data, data);
-				angular.copy(response.data, stocks.userStocks);
-				stocks.getStocksPredictions(stocks.userStocks); //added by Ilya
+				angular.copy(response.data, stocks.watchStocks);
+				stocks.getStocksPredictions(stocks.watchStocks); //added by Ilya
 			})
 			.catch(function(response){
 				$log.log("There was an error, error status: " + response.status);
@@ -59,8 +61,8 @@ angular.module('stocks')
 	
 	
 	// remove stock
-	stocks.removeStock = function(company){
-		$http.get('/FishStock/removeFromWatch.do', company)
+	stocks.removeStock = function(company, success){
+		$http.post('/FishStock/removeFromWatch.do', company)
 			.then(function(response){
 				$log.log("Remove stock -- response object: ");
 				$log.log(response.data);
@@ -72,7 +74,7 @@ angular.module('stocks')
 	
 	//get a stock prediction
 	stocks.getStockPrediction = function(company){
-		$http.get('/FishStock/getPrediction.do', company)
+		$http.post('/FishStock/getPrediction.do', company)
 			.then(function(response) {
 				stocks.predictions.push(response.data);
 			})
@@ -83,8 +85,10 @@ angular.module('stocks')
 	
 	//get predictions for many stocks
 	stocks.getStocksPredictions = function(companies){
-		$http.get('/FishStock/getPredictions.do', companies)
+		$http.post('/FishStock/getPredictions.do', companies)
 			.then(function(response) {
+				$log.log("Got predictions: ");
+				$log.log(response.data);
 				angular.copy(response.data, stocks.predictions);
 			})
 			.catch(function(response){

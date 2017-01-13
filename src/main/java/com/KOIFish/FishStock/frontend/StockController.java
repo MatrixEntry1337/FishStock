@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.KOIFish.FishStock.beans.FishStockCompany;
 import com.KOIFish.FishStock.beans.FishStockPrediction;
+import com.KOIFish.FishStock.beans.FishStockTimePeriod;
 import com.KOIFish.FishStock.beans.FishStockTransferCompanies;
 import com.KOIFish.FishStock.middletier.FishStockBusinessDelegate;
 
@@ -32,7 +33,7 @@ public class StockController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value={"/getPrediction.do"}, method={RequestMethod.GET}, produces={"application/json"},
+	@RequestMapping(value={"/getPrediction.do"}, method={RequestMethod.POST}, produces={"application/json"},
 					consumes={"application/json"})
 	public FishStockPrediction getPrediction(@RequestBody FishStockCompany company ) {
 		FishStockPrediction prediction = delegate.predictStock(company);
@@ -41,10 +42,16 @@ public class StockController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value={"/getPredictions.do"}, method={RequestMethod.GET}, produces={"application/json"},
+	@RequestMapping(value={"/getPredictions.do"}, method={RequestMethod.POST}, produces={"application/json"},
 					consumes={"application/json"})
-	public FishStockPrediction[] getPredictions(@RequestBody FishStockCompany[] companies ) {
+	public FishStockPrediction[] getPredictions(@RequestBody FishStockTimePeriod[] watchedStocks ) {
+		FishStockCompany[] companies = new FishStockCompany[watchedStocks.length];
+		for(int i = 0; i < watchedStocks.length; i++){
+			companies[i] = watchedStocks[i].getCompany();
+		}
+		
 		FishStockPrediction[] predictions = delegate.predictStocks(companies);
+		System.out.println(predictions);
 		return predictions;
 	
 	}

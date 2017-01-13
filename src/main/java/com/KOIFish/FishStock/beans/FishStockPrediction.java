@@ -28,4 +28,13 @@ public class FishStockPrediction {
 
 	public int getWithinYearFactor() { return withinYearFactor; }
 	public void setWithinYearFactor(int withinYearFactor) { this.withinYearFactor = withinYearFactor; }
+
+	@Override
+	public String toString() {
+		return "FishStockPrediction [symbol=" + symbol + ", withinDayFactor=" + withinDayFactor + ", withinWeekFactor="
+				+ withinWeekFactor + ", withinMonthFactor=" + withinMonthFactor + ", withinYearFactor="
+				+ withinYearFactor + "]";
+	}
+	
+	
 }

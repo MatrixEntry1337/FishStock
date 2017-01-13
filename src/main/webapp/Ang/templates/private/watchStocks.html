@@ -1,11 +1,43 @@
 <div container>
 	<div class="row">
 		<div class="col-md-4 col-sm-6">
-			<div class="list-group">
-			  <a class="list-group-item" role="button" ng-repeat="stock in watchStocks" ng-click="selectStock(stock)">
-			    {{ stock.company.companyName }}
-			  </a>
-			</div>	
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="list-group">
+					  <a class="list-group-item" role="button" ng-repeat="stock in watchStocks" ng-click="selectStock(stock)">
+					    {{ stock.company.companyName }}
+					  </a>
+					</div>	
+				</div>
+				<div class="col-md-12 col-sm-12 col-xs-12" ng-show="selectedStock">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							Prediction - {{ selectedStock.name }}
+						</div>
+						<div class="panel-body">
+							
+							<ul class="list-group">
+							  <li class="list-group-item">
+							    <span class="badge">{{ selectedPrediction.withinDayFactor }}</span>
+							    	Within Day
+							  </li>
+							  <li class="list-group-item">
+							    <span class="badge">{{ selectedPrediction.withinWeekFactor }}</span>
+							    	Within Week
+							  </li>
+							  <li class="list-group-item">
+							    <span class="badge">{{ selectedPrediction.withinMonthFactor }}</span>
+							    	Within Month
+							  </li>
+							  <li class="list-group-item">
+							    <span class="badge">{{ selectedPrediction.withinYearFactor }}</span>
+							    	Within Year
+							  </li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div class="col-md-8 col-sm-6" ng-show="selectedStock">
 			<div class="panel panel-primary">
@@ -15,7 +47,6 @@
 					ng-click="addStock(selectedStock)"></span>
 				</div>
 				<div class="panel-body">
-					
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3 col-sm-12">
 							<canvas id="radar" class="chart chart-radar"

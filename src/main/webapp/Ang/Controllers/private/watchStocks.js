@@ -1,21 +1,45 @@
 angular.module('stocks').controller("accountWatchStocks", function($scope, $log, stocksFtry, allData, watchStocks){
-	$scope.watchStocks = watchStocks;
+	
+	// all stocks
 	$scope.data = allData;
+	
+	// watched stocks
+	$scope.watchStocks = watchStocks;
+
+	// stocks predictions
+	$scope.predictions = stocksFtry.predictions;
 	
 	// currently selected stock
 	$scope.selectStock = function(watchedStock){
-		var stock = null;
-		
+
+		// look for stock data 
+		var stock = null;		
 		angular.forEach(allData.stocks, function(value){
 			if(watchedStock.company.symbol == value.symbol)
 				stock = value;
 		});
 		
 		$scope.selectedStock = stock;
+		
+		// prediction
+		selectPrediction(stock);
+		
+		// create charts
 		setQuote(stock);
 		setHistory(stock);
 	};
 
+	// get prediction
+	function selectPrediction(stock){
+		$scope.predictions = stocksFtry.predictions;
+		$log.log($scope.predictions);
+		
+		$scope.selectedPrediction = $scope.predictions.find(function(element){
+			return element.symbol == stock.symbol;
+		});
+		$log.log($scope.selectedPrediction);
+	}
+	
 	/************************************* Chart Creation ************************************/
 	function setQuote(stock){
 		$scope.quoteLabels = ["Open", "PreviousClose", "Day High", "Day Low", "Year High", "Year Low"];

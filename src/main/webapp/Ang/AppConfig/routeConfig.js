@@ -60,7 +60,10 @@ angular.module('FishStockApp')
 			resolve: {
 	            allData: function(stocksFtry){
 	            	return stocksFtry.getAllData();
-	            }
+	            },
+				watchStocks: function(stocksFtry){
+					return stocksFtry.getUserStocks();
+				}
 			}
 		})
 		.state("user_account.watchStocks",{

@@ -1,5 +1,5 @@
 angular.module('stocks')
-.controller('accountStocksCtrl', function(stocksFtry, $scope, $log, allData){
+.controller('accountStocksCtrl', function(stocksFtry, $scope, $log, allData, watchStocks){
 	
 	// get back stock that user is watching 
 	 stocksFtry.getUserStocks();
@@ -8,7 +8,7 @@ angular.module('stocks')
 	$scope.data = allData;
 
 	// watched stocks
-	$scope.watchStocks = stocksFtry.watchStocks;
+	$scope.watchStocks = watchStocks;
 	
 	// currently selected stock
 	$scope.selectStock = function(stock){
@@ -17,25 +17,22 @@ angular.module('stocks')
 		setHistory(stock);
 	};
 
-        function getCompanyId(stock) {
-            var array = $scope.data.companies;
-            var index = array.find(function (element) {
-                $log.log(element);
-                return element.symbol == stock.symbol;
-            });
-            return index.companyId;
-        }
+    function getCompanyId(stock) {
+        var array = $scope.data.companies;
+        var index = array.find(function (element) {
+            $log.log(element);
+            return element.symbol == stock.symbol;
+        });
+        return index.companyId;
+    }
 
 	/************************************* User Add and Remove ******************************/
 	$scope.addStock = function(stock){
-//		$log.info("Adding Stock: ");
-//		$log.log(stock);
 		var company = this.data.companies.find(function(element){
 			return element.symbol == stock.symbol;
 		});
 
 		stocksFtry.addStock(company, function(){$scope.message = "Stock added to list";});
-
 	};
 
 	$scope.alreadyAdded = function(stock){
